@@ -23,7 +23,7 @@ The command line allows you to precisely control complex settings in bioinformat
 
 **2. Reproducibility and Compatibility**
    
-Reproducibility is a cornerstone of any experiment, meaning that under the same conditions, others should be able to reproduce the same results. The command line provides a simple yet comprehensive way to document bioinformatics analysis protocols, unlike vague GUI instructions like “right-click this icon and select that option.” Moreover, software interfaces can vary across operating systems, but command-line tools are often cross-platform compatible, allowing you to run the same workflows on different systems (Linux, macOS, Windows) without worrying about platform-specific differences.
+Reproducibility is a cornerstone of any experiment, meaning that under the same conditions, others should be able to reproduce the same results. The command line provides a simple yet comprehensive way to document bioinformatics analysis protocols, unlike vague GUI instructions like “right-click this icon and select that option.” Moreover, software interfaces can vary across operating systems, but command-line tools are often **cross-platform compatible**, allowing you to run the same workflows on different systems (Linux, macOS, Windows) without worrying about platform-specific differences.
 
 **3. Development, Maintenance, and Integration**
    
@@ -40,3 +40,32 @@ As we said, Aoifolution is a high-performance computing (HPC) system.  Here is i
 - 20 cores and 40 threads in total
 
 As you can see, Aoifolution is probably 10 times more powerful than your local computer. It is more like a **cluster** of many computers.
+
+Everytime when you log in Aoifolution (SSH), it pops the system information: 
+```bash
+li@LOCAL ~
+$ ssh liyuanshuo@aoifolution.gen.tcd.ie
+Welcome to Ubuntu 20.10 (GNU/Linux 5.8.0-53-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+3 updates can be installed immediately.
+0 of these updates are security updates.
+To see these additional updates run: apt list --upgradable
+
+Your Ubuntu release is not supported anymore.
+For upgrade information, please visit:
+http://www.ubuntu.com/releaseendoflife
+
+New release '22.04.5 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+*** System restart required ***
+No mail.
+Last login: Mon Sep 30 17:27:00 2024 from 10.6.48.122
+```
+It shows Aoifolution is using Ubuntu 20.10.
+
+### Linux? Unix? Ubuntu?
