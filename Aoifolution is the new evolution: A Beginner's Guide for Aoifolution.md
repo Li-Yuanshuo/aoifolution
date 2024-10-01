@@ -68,4 +68,17 @@ Last login: Mon Sep 30 17:27:00 2024 from 10.6.48.122
 ```
 It shows Aoifolution is using Ubuntu 20.10.
 
-### Linux? Unix? Ubuntu?
+### Linux? Unix? Ubuntu? Kernel? OS?
+
+If you don’t have a strong computer background, all these computer terms might feel overwhelming. Let’s break them down in the simplest way possible.
+After you assemble a computer (for example, you’ve put together an Aoifolution based on the hardware specifications above), the next big question is: how do you give it instructions? Unfortunately, Aoifolution doesn’t have eyes or ears to see or hear your commands, nor does it have a brain to process them. You need an operating system to communicate with Aoifolution and make it understand your instructions.
+
+Think of the operating system as a translator. It gathers your input (via applications), translates it into a language the hardware can understand (via the kernel), and then sends the instructions to Aoifolution. The operating system (OS) consists of two main parts: applications (which talk to users) and the kernel (which talks to the machine).
+
+A long time ago (in 1969), Bell Labs developed an operating system called UNIX. It was so efficient and versatile that it became a potential universal operating system, influencing the design and logic of many future systems. These systems are known as Unix-like systems.
+Examples include GNU/Linux OS (where the kernel is Linux) and macOS (where the kernel is XNU).
+
+> NOTE: This explains why the command line in Linux and macOS is often compatible, but Windows is not, as its kernel is based on Windows NT.
+
+
+
