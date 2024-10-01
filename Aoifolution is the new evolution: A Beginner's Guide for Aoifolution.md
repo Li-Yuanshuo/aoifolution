@@ -2,7 +2,7 @@
 
 Children today have an entirely different way of interacting with electronic devices. Most of them own a smartphone, tablet, or even a VR device earlier than they get a laptop. To them, it feels more intuitive to swipe and tap on a touchscreen than to use other input methods. 
 
-However, in the past, keyboards were the primary way to interact with electronic devices (preceded by teletype machines and punch cards). Even the mouse only became widespread after the advent of graphical user interfaces (GUI). 
+However, in the past, keyboards were the primary way to interact with electronic devices (after teletype machines and punch cards). Even the mouse only became widespread after the advent of graphical user interfaces (GUI). 
 
 So, you might find **command-line** operating systems unfamiliar, but that's perfectly fine—everyone has a beginning.
 
