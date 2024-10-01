@@ -103,7 +103,8 @@ ___
 
 After all the old man's rambling, this is finally the session to teach you how to handle Aoifelution.
 
-1. SSH to Aoifolution
+**1. SSH to Aoifolution**
+   
    SSH (Secure Shell Protocol)  is a most notable applications for remote login and command-line execution.
    ```bash
    ssh <username>@aoifolution.gen.tcd.ie
@@ -112,7 +113,10 @@ After all the old man's rambling, this is finally the session to teach you how t
 
 >TIPS: Use up ⬆ and down ⬇ arrow to select the command you typed before so you don't need to type it again
 
-2. Wandering in the file system
+<br><br>
+
+**2. Wandering in the file system**
+
    ```bash
    liyuanshuo@aoifolution:~$
    ```
@@ -186,7 +190,7 @@ After all the old man's rambling, this is finally the session to teach you how t
    >TIPS: You **DON'T** have to type the complete file or folder name when you write in commond line. Try to press `TAB` key after you type the first few letters. The `TAB` key is usually located above the Caps Lock key. `TAB` can auto-complete the full name for you. It is very user-friendly for someone who cannot spell like me.
    >TIPS: Double `TAB` when you need to see all the possible files or folder options, so you don't need to `ls` again in the middle of writing a command
 
-    <br>
+<br>
    
    ***6. path, path, path***
 
@@ -196,17 +200,38 @@ After all the old man's rambling, this is finally the session to teach you how t
    Instead of clicking around, you need to type the full path to tell the system where to go. There are two types of paths:
 
    -**Absolute Path**: An absolute path starts from the root directory (/) and specifies the full path to a file or directory. It remains the same regardless of the current working directory.
-         **Example**: /home/user/documents/file.txt
+
+      **Example**: /home/user/documents/file.txt
 
    -**Relative Path**: A relative path starts from the current working directory and provides a path to a file or directory relative to that location. It uses . or .. to start.
-         **Example**: ./documents/file.txt or ../file.txt
 
-Now you should 
+      **Example**: ./documents/file.txt or ../file.txt
 
+   As you may have noticed, different directory levels in the file system are separated by `/`.
+   
+
+<br><br>
+___
+   Now you should be able to navigate around the server and explore its contents. Try completing the following exercises:
+
+   - [x] Go back to your home directory.
+   - [x] List the contents of the parent directory while you are in your home directory.
+   - [x] List the contents of the `/shared` folder and check their details while still in your home directory.
+   - [x] Change the current directory to the folder inside `/shared` that starts with `aoifo` using a one-line command (use double TAB for autocompletion).
+   - [x] Check where you are now (your current directory).
+   - [x] Return to your home directory using a different command from the first exercise.
+   
 <details>
-  <summary>点击显示答案</summary>
-  
-  答案是：42
+  <summary>click to see the answers</summary>
+   
+  ```bash
+   cd
+   ls ../
+   ls -l ../shared
+   cd ../shared/aoifolution_exercises/
+   pwd
+   cd ~
+  ```
   
 </details>
 
