@@ -109,3 +109,7 @@ After all the old man's rambling, this is finally the session to teach you how t
    ssh <username>@aoifolution.gen.tcd.ie
    ```
 >TIPS: Nothing will appear on the screen when you enter your password, so don't freak out.
+
+>TIPS: Use up ⬆ and down ⬇ arrow to select the commond you typed before so you don't need to type it again
+
+
