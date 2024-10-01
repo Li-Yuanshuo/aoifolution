@@ -75,14 +75,21 @@ If you don’t have a strong computer background, all these computer terms might
 After you assemble a computer (for example, you’ve put together an Aoifolution based on the hardware specifications above), the next big question is: how do you give it instructions? 
 Unfortunately, Aoifolution doesn’t have eyes or ears to see or hear your commands, nor does it have a brain to process them (like Elle). You need an operating system to communicate with Aoifolution and make it understand your instructions.
 
-Think of the operating system as a translator. It gathers your input (via applications), translates it into a language the hardware can understand (via the kernel), and then sends the instructions to Aoifolution. The operating system (OS) consists of two main parts: applications (which talk to users) and the kernel (which talks to the machine).
+Think of the operating system as a translator. It gathers your input (via applications), translates it into a language the hardware can understand (via the kernel), and then sends the instructions to Aoifolution. The operating system (OS) consists of two main parts: **applications** (which talk to users) and the **kernel** (which talks to the machine).
 
 A long time ago (in 1969), Bell Labs developed an operating system called [UNIX](https://en.wikipedia.org/wiki/Unix). It was so efficient and versatile that it became a potential universal operating system, influencing the design and logic of many future systems. These systems are known as Unix-like systems.
 Examples include GNU/Linux OS (where the kernel is Linux) and macOS (where the kernel is XNU).
 
 > NOTE: This explains why the command line in Linux and macOS is often compatible, but Windows is not, as its kernel is based on Windows NT.
 
+Because the GNU/Linux OS is an open-source project, it has attracted a large number of developers who contribute to its growth. The kernel is [Linux](https://en.wikipedia.org/wiki/Linux_kernel)，and the applications and system tools are provided by the [GNU](https://en.wikipedia.org/wiki/GNU) project. 
 
+The GNU project offers essential system tools, libraries, compilers, and shells that the Linux kernel does not provide. Meanwhile, Linux provides the kernel that GNU lacks, making these two parts complementary. Therefore, what we often refer to as the "Linux" operating system is more accurately called the "GNU/Linux" operating system.
 
+On top of this, many developers have continued to improve the operating system to give users a more complete experience, resulting in what we know as Linux distributions. The most well-known and long-standing distribution is **Debian**, which adds features like the software management system **APT** (Advanced Package Tool) to the base operating system.
+
+Debian also serves as the foundation for other popular distributions, including **Ubuntu** (which powers Aoifolution), Raspberry Pi OS (used in our microscope), and many others.
+
+In summary, our Aoifolution is an **HPC** running **Ubuntu**, which is built on the **GNU/Linux OS**. This core system shares many of the same commands and functionality as other **Unix-like** systems, such as macOS.
 
 
