@@ -308,5 +308,103 @@ worm  worm3
 ```
 >NOTE: `mv` command actually do two things at once: copy file to DEST and remove the orginal file.
 
-### ***D. DELETE***
+### ***D. DELETE（permanently）***
+The command for delete is `rm`, refers to remove a file. 
+```bash
+rm elle2/worm3
+ls elle2
+worm
+```
+Now try it on a directory:
+```bash
+rm elle2
+rm: cannot remove 'elle2': Is a directory
+```
+It is not work!!! You **cannot** get rid of elle. 
 
+Check how to solve the issue with `rm --help`:
+
+<details>
+  <summary>the answers</summary>
+   
+  ```bash
+    rm elle2 -r
+    ls
+  ```
+</details>
+
+>WARNING: Be **cautious** when using the rm command in Linux. It **permanently** deletes files and directories without recovery, so mistakes can lead to irreversible data loss.
+>If you are not sure the data is useful or not, move it to somewhere first.
+
+<br><br>
+___
+   Now you should be able to do the basic operation . Try completing the following exercises:
+
+   - [x] List the files in `/home/shared/aoifolution_exercises`
+   - [x] Copy the files there to `/elle` while you are in your home directory (use double TAB for autocompletion).
+   - [x] Delete the `.fasta` file that you just copied
+   - [x] Move the `.gff3` file from `/elle` to your home directory 
+   - [x] Remove the entire `/elle` folder
+   - [x] Make a folder called `worms`
+   - [x] Use `nano` to make a new file called `worm1`, write `This worm is cool` and save it. Move it in the `worms` folder
+   - [x] Stay in the home directory, and make a new file in the `worms` folder called `worm2`, write `This worm is NOT cool` and save it.
+     
+<details>
+  <summary>click to see the answers</summary>
+   
+  ```bash
+   ls /home/shared/aoifolution_exercises/
+   cp /home/shared/aoifolution_exercises/Homo_sapiens.GRCh38.112.ensembl.fasta elle/
+   cp /home/shared/aoifolution_exercises/Homo_sapiens.GRCh38.112.ensembl.gff3 elle/
+   rm elle/Homo_sapiens.GRCh38.112.ensembl.fasta
+   mv elle/Homo_sapiens.GRCh38.112.ensembl.gff3 .
+   rm elle -r
+   mkdir worms
+   nano worm1 # then type `This worm is cool` then `ctrl + x` and `enter`
+   mv worm1 worms
+   nano worms/worm2 # then type `This worm is cool` then `ctrl + x` and `enter`
+  ```
+  
+</details>
+
+___
+<br><br>
+
+
+## **4.View the file**
+
+You should have a `.gff3` file, a `/worm` folder with a cool worm1 and a not cool worm2 in it. 
+
+### ***A. Meow***
+
+To quick view a file, you can use `cat` command and the file you want to view. Now use it to see which worm is the cool worm:
+```bash
+cat worms/worm1
+This worm is cool
+cat worms/worm2
+This worm is NOT cool
+```
+
+`cat` doesn't mean the meow cat, but the short for **concatenate**, which use for concatenate files together and print on the screen. Try to use it on worm1 and worm2 
+```bash
+cat worms/worm1 worms/worm2
+This worm is cool
+This worm is NOT cool
+```
+Great! Now try to view the `.fasta` file:
+```bash
+cat Homo_sapiens.GRCh38.112.ensembl.gff3
+```
+
+<details>
+  <summary>NOTES</summary>
+   
+   >NOTE: **MY EYES!! MY EYES!!**
+   
+   >>NOTE: `ctrl`+ `c` kills **whatever** job is running
+  
+   >>>NOTE: lesson 1: **Always** read the notes before you run a command
+
+   >>>>NOTE: lesson 2: **Never trust** others' data or scripts, or their personality.
+  
+</details>
