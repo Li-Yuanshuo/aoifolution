@@ -375,7 +375,7 @@ ___
 
 You should have a `.gff3` file, a `/worm` folder with a cool worm1 and a not cool worm2 in it. 
 
-### ***A. Meow***
+### ***A. Meow :cat:***
 
 To quick view a file, you can use `cat` command and the file you want to view. Now use it to see which worm is the cool worm:
 ```bash
@@ -385,13 +385,13 @@ cat worms/worm2
 This worm is NOT cool
 ```
 
-`cat` doesn't mean the meow cat, but the short for **concatenate**, which use for concatenate files together and print on the screen. Try to use it on worm1 and worm2 
+`cat` doesn't mean the meow cat :cat2:, but the short for **concatenate**, which use for concatenate files together and print on the screen. Try to use it on worm1 and worm2 
 ```bash
 cat worms/worm1 worms/worm2
 This worm is cool
 This worm is NOT cool
 ```
-Great! Now try to view the `.fasta` file:
+Great! Now try to view the `.gff3` file:
 ```bash
 cat Homo_sapiens.GRCh38.112.ensembl.gff3
 ```
@@ -408,3 +408,5 @@ cat Homo_sapiens.GRCh38.112.ensembl.gff3
    >>>>NOTE: lesson 2: **Never trust** others' data or scripts, or their personality.
   
 </details>
+
+### ***B. Head or tail***
