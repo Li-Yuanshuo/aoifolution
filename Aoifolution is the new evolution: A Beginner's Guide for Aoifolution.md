@@ -123,7 +123,7 @@ After all the old man's rambling, this is finally the session to teach you how t
    After you log in to Aoifolution, this is what you will see first. The tilde symbol `~` represents your home directory, which is where you will start every time you log in.
    <br>
    
-   ***1. But where exactly is your home directory? try:***
+   ***A. But where exactly is your home directory? try:***
    ```bash
    liyuanshuo@aoifolution:~$ pwd
    /home/liyuanshuo
@@ -133,7 +133,7 @@ After all the old man's rambling, this is finally the session to teach you how t
    `home/` is the home directory for Aoifolution, and you are one of the users under it.
    <br>
 
-   ***2. What do you have in your home directory? try:***
+   ***B. What do you have in your home directory? try:***
    ```bash
    liyuanshuo@aoifolution:~$ ls
 
@@ -144,7 +144,7 @@ After all the old man's rambling, this is finally the session to teach you how t
    `ls` means `list`. It list all files and folders in the current directory.
    <br>
 
-   ***3. Where shoud I go? try***
+   ***C. Where shoud I go? try***
    ```bash
    liyuanshuo@aoifolution:~$ cd ..
 
@@ -162,7 +162,7 @@ After all the old man's rambling, this is finally the session to teach you how t
    **Voilà**, you can see every users on Aoifolution and each person have one home directory. You could find yourself and maybe other peoples' name in it.
    <br>
    
-   ***4. When were they here?***
+   ***D. When were they here?***
    
    If you want to know infomation about them and their directory, you can try:
    ```bash
@@ -177,7 +177,7 @@ After all the old man's rambling, this is finally the session to teach you how t
    >TASK: Use `ls --help` and `man ls` to read the manual of `ls` and compare the difference.
    <br>
    
-   ***5. Homecoming***
+   ***E. Homecoming***
    
    Now, before you mess up other people's files, it is better to go back your own home directory. There are a couple different way to do it:
    
@@ -192,7 +192,7 @@ After all the old man's rambling, this is finally the session to teach you how t
 
 <br>
    
-   ***6. path, path, path***
+   ***F. Path, path, path***
 
    Now you’ve learned how to navigate to different directories, how to see what’s inside each folder, and how to check your current location. You also learned that in the file system, `..` refers to the parent directory (one level up from the current directory), `~` is your home directory, and `.` represents the current directory (which you can see when using the pwd command).
 
@@ -234,5 +234,5 @@ ___
   ```
   
 </details>
-
+___
 
