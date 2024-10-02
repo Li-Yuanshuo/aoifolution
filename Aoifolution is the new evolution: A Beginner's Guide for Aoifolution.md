@@ -103,7 +103,7 @@ ___
 
 After all the old man's rambling, this is finally the session to teach you how to handle Aoifelution.
 
-**1. SSH to Aoifolution**
+## **1. SSH to Aoifolution**
    
    SSH (Secure Shell Protocol)  is a most notable applications for remote login and command-line execution.
    ```bash
@@ -115,15 +115,15 @@ After all the old man's rambling, this is finally the session to teach you how t
 
 <br><br>
 
-**2. Wandering in the file system**
+## **2. Wandering in the file system**
 
    ```bash
    liyuanshuo@aoifolution:~$
    ```
    After you log in to Aoifolution, this is what you will see first. The tilde symbol `~` represents your home directory, which is where you will start every time you log in.
-   <br>
+   <br><br>
    
-   ***A. But where exactly is your home directory? try:***
+### ***A. But where exactly is your home directory? try:***
    ```bash
    liyuanshuo@aoifolution:~$ pwd
    /home/liyuanshuo
@@ -131,9 +131,9 @@ After all the old man's rambling, this is finally the session to teach you how t
    `pwd` means `print work directory`, it shows the current directory where you are right now. It works in everywhere.
 
    `home/` is the home directory for Aoifolution, and you are one of the users under it.
-   <br>
+   <br><br>
 
-   ***B. What do you have in your home directory? try:***
+### ***B. What do you have in your home directory? try:***
    ```bash
    liyuanshuo@aoifolution:~$ ls
 
@@ -142,9 +142,9 @@ After all the old man's rambling, this is finally the session to teach you how t
    **Nothing!!** It makes sense if this is your first time log in your server, becasue you have nothing yet.
    
    `ls` means `list`. It list all files and folders in the current directory.
-   <br>
+   <br><br>
 
-   ***C. Where shoud I go? try***
+### ***C. Where shoud I go? try***
    ```bash
    liyuanshuo@aoifolution:~$ cd ..
 
@@ -160,9 +160,9 @@ After all the old man's rambling, this is finally the session to teach you how t
    <br>
 
    **Voilà**, you can see every users on Aoifolution and each person have one home directory. You could find yourself and maybe other peoples' name in it.
-   <br>
+   <br><br>
    
-   ***D. When were they here?***
+### ***D. When were they here?***
    
    If you want to know infomation about them and their directory, you can try:
    ```bash
@@ -175,9 +175,9 @@ After all the old man's rambling, this is finally the session to teach you how t
    >NOTE: **command, arguments and options/flags constitute most of command lines. You can chech how to use a command by `command --help` or `command -h` or `man command` (man means manual) to read the manual**
    
    >TASK: Use `ls --help` and `man ls` to read the manual of `ls` and compare the difference.
-   <br>
+   <br><br>
    
-   ***E. Homecoming***
+### ***E. Homecoming***
    
    Now, before you mess up other people's files, it is better to go back your own home directory. There are a couple different way to do it:
    
@@ -189,10 +189,10 @@ After all the old man's rambling, this is finally the session to teach you how t
    ```
    >TIPS: You **DON'T** have to type the complete file or folder name when you write in commond line. Try to press `TAB` key after you type the first few letters. The `TAB` key is usually located above the Caps Lock key. `TAB` can auto-complete the full name for you. It is very user-friendly for someone who cannot spell like me.
    >TIPS: Double `TAB` when you need to see all the possible files or folder options, so you don't need to `ls` again in the middle of writing a command
-
-<br>
+   <br><br>
    
-   ***F. Path, path, path***
+   
+### ***F. Path, path, path***
 
    Now you’ve learned how to navigate to different directories, how to see what’s inside each folder, and how to check your current location. You also learned that in the file system, `..` refers to the parent directory (one level up from the current directory), `~` is your home directory, and `.` represents the current directory (which you can see when using the pwd command).
 
@@ -234,5 +234,79 @@ ___
   ```
   
 </details>
+   
 ___
+
+## **3.Make some changes**
+Looks like your home directory is still empty. Lets make some changes.
+
+### ***A. make a folder***
+
+First, lets make a folder called `elle`(don't ask why) then go in there. The command is `mkdir`, refers to  `MaKe DIRectory`. 
+```bash
+mkdir elle
+cd elle
+```
+You can make multiple folders in the same time 
+```bash
+mkdir elle1 elle2
+```
+You can make folder in another exist folder
+```bash
+mkdir elle1/elle3
+```
+However you cannot make folder in an not exist folder
+```bash
+mkdir elle4/elle5
+mkdir: cannot create directory 'elle4/elle5': No such file or directory
+```
+### ***B. make a file***
+The simplest way to make an empty file is `touch`
+```bash
+touch worm # why would anyone do this?
+ls
+```
+You can see there is a new file called `worm` but it is empty. Usually, if you want to build a file, you do want to enter something to save in it. Here, you need Text editor Software to do it. 
+
+The most powerful text editor is called **Vim**. 
+
+But we are not going to use it cause it is way complicated. 
+
+Here we use a lighter and simple editer called `nano`
+
+```bash
+nano worm
+```
+You would see yourself inside the eidter interface. Type something like `Worms are cool`, and `ctrl` + `x` to exit. Press **y** to save the change and  `enter` to save in the same file 
+>TIPS: If you `nano` a not exist file, nano will build a new one. But if you didn't do anything and exit, the empty file won't be save.
+>
+>NOTE: The best way to edit a txt/tsv/csv file is use sofewares in your own local computer after you set up the SSHF (personally experience)
+
+### ***C. copy, paste and move***
+Copy and paste is one commond in linux: `cp`. It use as `cp` [what] [to where] 
+```bash
+cp worm elle1/
+ls elle1/
+worm
+```
+If you give a new file name instead of a folder in the second argument, `cp` will copy the file **AND** rename it to the new name. 
+```bash
+cp worm elle1/worm2
+ls elle1/
+worm  worm2
+```
+`mv`, which is move a file to some where, uses the same rule as `cp`
+```
+mv worm elle2/
+mv elle1/worm elle2/worm3
+ls
+elle1  elle2
+ls elle1
+worm2
+ls elle2
+worm  worm3
+```
+>NOTE: `mv` command actually do two things at once: copy file to DEST and remove the orginal file.
+
+### ***D. DELETE***
 
