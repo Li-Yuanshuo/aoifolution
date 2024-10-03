@@ -5,8 +5,10 @@ Children today have an entirely different way of interacting with electronic dev
 However, in the past, keyboards were the primary way to interact with electronic devices (after teletype machines and punch cards). Even the mouse only became widespread after the advent of graphical user interfaces (GUI). 
 
 So, you might find **command-line** operating systems unfamiliar, but that's perfectly fine — everyone has a beginning.
-___
+
 <br><br>
+___
+
 _**But first,**_
 ## **_Why_** is the **command-line tool** used in bioinformatics?
 
@@ -144,7 +146,7 @@ After all the old man's rambling, this is finally the session to teach you how t
    `ls` means `list`. It list all files and folders in the current directory.
    <br><br>
 
-### ***C. Where shoud I go? try***
+### ***C. Where shoud I go? try:***
    ```bash
    liyuanshuo@aoifolution:~$ cd ..
 
@@ -168,7 +170,7 @@ After all the old man's rambling, this is finally the session to teach you how t
    ```bash
    ls -l
    ```
-   Here, `ls -l` shows more details of the files and folders, including permission, owner, size and so on.
+   Here, `ls -l` shows more detailed **l**ong format of the files and folders, including permission, owner, size and so on.
    
    `-l` is the options/flags of the command. It modify the details of the command. It could be a single letter such as  `-l` or a full word   `--all`. 
 
@@ -236,6 +238,7 @@ ___
 </details>
    
 ___
+<br><br>
 
 ## **3.Make some changes**
 Looks like your home directory is still empty. Lets make some changes.
@@ -308,7 +311,24 @@ worm  worm3
 ```
 >NOTE: `mv` command actually do two things at once: copy file to DEST and remove the orginal file.
 
-### ***D. DELETE（permanently）***
+### ***D. Rename a file***
+Command line doesn't have a function for rename!!!
+
+But think about this: the logic of **rename** is to move a file with OLD_NAME in to a file with NEW_NAME. Do you know how to do it now?
+
+Try to renmae `worm3` in `/elle2` as `worm2`
+
+<details>
+  <summary>the answers</summary>
+   
+  ```bash
+    mv elle2/worm3 elle2/worm2
+    ls elle2
+    worm  worm2
+  ```
+</details>
+
+### ***E. DELETE（permanently）***
 The command for delete is `rm`, refers to remove a file. 
 ```bash
 rm elle2/worm3
@@ -320,7 +340,7 @@ Now try it on a directory:
 rm elle2
 rm: cannot remove 'elle2': Is a directory
 ```
-It is not work!!! You **cannot** get rid of elle. 
+It is not work!!! You **CANNOT** get rid of elle. 
 
 Check how to solve the issue with `rm --help`:
 
@@ -336,13 +356,16 @@ Check how to solve the issue with `rm --help`:
 >WARNING: Be **cautious** when using the rm command in Linux. It **permanently** deletes files and directories without recovery, so mistakes can lead to irreversible data loss.
 >If you are not sure the data is useful or not, move it to somewhere first.
 
+>NOTE: As opposed to `mkdir`, deleted a folder is `rmdir`, but it only function on empty folder
+
 <br><br>
 ___
    Now you should be able to do the basic operation . Try completing the following exercises:
 
    - [x] List the files in `/home/shared/aoifolution_exercises`
    - [x] Copy the files there to `/elle` while you are in your home directory (use double TAB for autocompletion).
-   - [x] Delete the `.fasta` file that you just copied
+   - [x] rename the `.fasta` file to `.faa` file
+   - [x] Delete the `.faa` file that you just renamed
    - [x] Move the `.gff3` file from `/elle` to your home directory 
    - [x] Remove the entire `/elle` folder
    - [x] Make a folder called `worms`
@@ -356,7 +379,8 @@ ___
    ls /home/shared/aoifolution_exercises/
    cp /home/shared/aoifolution_exercises/Homo_sapiens.GRCh38.112.ensembl.fasta elle/
    cp /home/shared/aoifolution_exercises/Homo_sapiens.GRCh38.112.ensembl.gff3 elle/
-   rm elle/Homo_sapiens.GRCh38.112.ensembl.fasta
+   mv elle/Homo_sapiens.GRCh38.112.ensembl.fasta elle/Homo_sapiens.GRCh38.112.ensembl.faa
+   rm elle/Homo_sapiens.GRCh38.112.ensembl.faa
    mv elle/Homo_sapiens.GRCh38.112.ensembl.gff3 .
    rm elle -r
    mkdir worms
@@ -397,16 +421,70 @@ cat Homo_sapiens.GRCh38.112.ensembl.gff3
 ```
 
 <details>
-  <summary>NOTES</summary>
+  <summary>NOTE: ctrl + c kills WHATEVER job is running </summary>
    
    >NOTE: **MY EYES!! MY EYES!!**
-   
-   >>NOTE: `ctrl`+ `c` kills **whatever** job is running
-  
-   >>>NOTE: lesson 1: **Always** read the notes before you run a command
-
-   >>>>NOTE: lesson 2: **Never trust** others' data or scripts, or their personality.
+   >
+   >>NOTE: lesson 1: **Always** read the notes before you run a command
+   >>
+   >>>NOTE: lesson 2: **Never trust** others' data or scripts, or their personality.
   
 </details>
 
 ### ***B. Head or tail***
+
+Obviously, big files like `.gff3` can't be printed on the screen at once. Let's just use `head` command to view the first few rows of the `.gff3` file. 
+```bash
+head Homo_sapiens.GRCh38.112.ensembl.gff3
+```
+Here are the first 10 rows of the `.gff3` file. Use `head --help` to check how to view more or less rows:
+<details>
+  <summary>the answers</summary>
+   
+  ```bash
+    head Homo_sapiens.GRCh38.112.ensembl.gff3 -n 20 # or 
+    head -15 Homo_sapiens.GRCh38.112.ensembl.gff3
+  ```
+</details>
+
+`tail` uses the same grammar as `head`, but shows the last few rows of a file. Try it:
+
+<details>
+  <summary>the answers</summary>
+   
+  ```bash
+    tail Homo_sapiens.GRCh38.112.ensembl.gff3 -n 20 # or 
+    tail -15 Homo_sapiens.GRCh38.112.ensembl.gff3
+  ```
+</details>
+
+### ***C. Less is more***
+
+It seems you still can't view the entire file continuously. `more` and `less` can help you view a file with a **srolling screen** effect. Try it:
+```bash
+more Homo_sapiens.GRCh38.112.ensembl.gff3
+```
+
+<details>
+  <summary>NOTE</summary>
+   
+   >NOTE: haven't you learn anything yet? press q to quit the viewing
+   >
+   >>NOTE: use `more -- help` to read the manual before you apply the command
+  
+</details>
+
+`Enter` or use arrow keys to rolling up and down. 
+
+`less` perform the same function as `more` to view a big file. Try `less --help` and `less file` to see what is the different
+
+   >NOTE: `less` was created after `more` to achive some function that `more` doesn't have, such as scrolling up. It is also faster and lighter
+   >
+   >NOTE: `less` open another window to view but `more` directly print on the screen. **`less` is recommended for viewing a file**
+
+
+___
+<br><br>
+
+## **5.Useful tools**
+
