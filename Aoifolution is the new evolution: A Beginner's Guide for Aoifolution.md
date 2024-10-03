@@ -458,6 +458,8 @@ Here are the first 10 rows of the `.gff3` file. Use `head --help` to check how t
   ```
 </details>
 
+>NOTE: There is a useful option for `tail`, when you need to monitor a log file's updating, you could use `tail -f file` to check it file in realtime.
+
 ### ***C. Less is more***
 
 It seems you still can't view the entire file continuously. `more` and `less` can help you view a file with a **srolling screen** effect. Try it:
@@ -487,4 +489,76 @@ ___
 <br><br>
 
 ## **5.Useful tools**
+
+### ***A. grep*** 
+
+`grep` stands for **Global Regular Expression Print**. It is the most powerful command-line tool used (I think) to search for specific patterns or strings of text within files. You can use grep to find lines in a file that contain a certain word or match a specific pattern. Try to serch "worm" in a file:
+```bash
+grep "worm" worms/worm1
+This worm is cool
+```
+>TIPS: You can use options with grep to make your searches more powerful:
+>
+>-i: Makes the search case-insensitive.
+>
+>-r: Recursively search through directories.
+>
+>-n: Show the line numbers along with the matched lines.
+
+Previously we mentioned, for a command line, the command itself is crucial. Then you can add arguments to apply the function on and options/flags to modify the details of the function. Here we introduce **Redirection** `>` to save the output in a file:
+
+```bash
+cat worms/worm1 worms/worm2
+This worm is cool
+This worm is NOT cool
+```
+```bash
+cat worms/worm1 worms/worm2 > worms.txt
+cat worms.txt
+This worm is cool
+This worm is NOT cool
+```
+This is very useful when you want to save your output result. And it can be combined to use with other command.
+
+Try to search "HOX" gene in the `.gff3` file, and save the output in a `HOX.tsv` file:
+
+<details>
+  <summary>the answers</summary>
+   
+  ```bash
+    grep "HOX" Homo_sapiens.GRCh38.112.ensembl.gff3 > HOX.tsv
+    head HOX.tsv
+  ```
+</details>
+
+>NOTE: If you use `>>`, the new output will be appended in the end of the original file.
+
+### ***B. Regular Expressions (RegEx)*** 
+
+What does the **Regular Expressions** in `grep` mean? Basically, it is a grammar of patterns used to match character combinations in strings. They are an incredibly powerful tool for searching, matching, and manipulating text. 
+Many Unix commands, like `grep`, `sed`, and `awk`, support RegEx for advanced pattern matching.
+
+RegEx allows you to search for text that matches complex patterns rather than simple fixed strings. This is particularly useful when you don't know the exact form of the text you're searching for or when you're working with large datasets.
+
+Considering RegEx is such a big part, I won't talk much about that here. But I recommend https://regex101.com/ to learn and test your RegEx.
+
+### ***C. wc*** 
+
+`wc` stands for **Word Count**, but it does more than just counting words. It can count lines, words, and characters in a file. This is especially useful when dealing with large files and you need to quickly get a sense of their size or contents. Try:
+
+```bash
+wc worms/worm1
+1 4 18 worms/worm1
+
+```
+This output shows:
+- 1 line
+- 4 words
+- 18 characters
+
+You can use specific options with wc:
+
+- `-l`: Count lines only.
+- `-w`: Count words only.
+- `-c`: Count characters only.
 
