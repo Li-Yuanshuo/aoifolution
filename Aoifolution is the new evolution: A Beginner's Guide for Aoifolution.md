@@ -174,7 +174,7 @@ After all the old man's rambling, this is finally the session to teach you how t
    
    `-l` is the options/flags of the command. It modify the details of the command. It could be a single letter such as  `-l` or a full word   `--all`. 
 
-   >NOTE: **command, arguments and options/flags constitute most of command lines. You can chech how to use a command by `command --help` or `command -h` or `man command` (man means manual) to read the manual**
+   >NOTE: **command, arguments and options/flags constitute most of command lines. You can chech how to use a command by `<command> --help` or `<command> -h` or `man <command>` (man means manual) to read the manual**
    
    >TASK: Use `ls --help` and `man ls` to read the manual of `ls` and compare the difference.
    <br><br>
@@ -189,7 +189,7 @@ After all the old man's rambling, this is finally the session to teach you how t
    cd ~ # remember, `~` always means your own home directory
    cd # if you don't have any argument after `ls`, the default directory is your home directory
    ```
-   >TIPS: You **DON'T** have to type the complete file or folder name when you write in commond line. Try to press `TAB` key after you type the first few letters. The `TAB` key is usually located above the Caps Lock key. `TAB` can auto-complete the full name for you. It is very user-friendly for someone who cannot spell like me.
+   >TIPS: You **DON'T** have to type the complete file or folder name when you write in command line. Try to press `TAB` key after you type the first few letters. The `TAB` key is usually located above the Caps Lock key. `TAB` can auto-complete the full name for you. It is very user-friendly for someone who cannot spell like me.
    >TIPS: Double `TAB` when you need to see all the possible files or folder options, so you don't need to `ls` again in the middle of writing a command
    <br><br>
    
@@ -218,8 +218,8 @@ ___
 
    - [x] Go back to your home directory.
    - [x] List the contents of the parent directory while you are in your home directory.
-   - [x] List the contents of the `/shared` folder and check their details while still in your home directory.
-   - [x] Change the current directory to the folder inside `/shared` that starts with `aoifo` using a one-line command (use double TAB for autocompletion).
+   - [x] List the contents of the `/home/shared` folder and check their details while still in your home directory.
+   - [x] Change the current directory to the folder inside `/home/shared` that starts with `aoifo` using a one-line command (use double TAB for autocompletion).
    - [x] Check where you are now (your current directory).
    - [x] Return to your home directory using a different command from the first exercise.
    
@@ -286,7 +286,7 @@ You would see yourself inside the eidter interface. Type something like `Worms a
 >NOTE: The best way to edit a txt/tsv/csv file is use sofewares in your own local computer after you set up the SSHF (personally experience)
 
 ### ***C. copy, paste and move***
-Copy and paste is one commond in linux: `cp`. It use as `cp` [what] [to where] 
+Copy and paste is one command in linux: `cp`. It use as `cp` [what] [to where] 
 ```bash
 cp worm elle1/
 ls elle1/
@@ -625,6 +625,7 @@ Now, instead of typing `ls -l` every time, you can simply type `ll`.
 ll
 ``
 However, now try to logout Aoifolution and login and try `ll` agian.
+>TIPS: you can logout Aoifolution by press `ctrl` + `d`. If you press them again you can exit the terminal. 
 ```bash
 ll: command not found
 ```
@@ -646,7 +647,7 @@ echo "This worm is also cool" > worms/worm3 # you can use `echo` to write to a f
 
 >NOTE: the capital words with $ symbol is called **Environment Variables**. They are key-value pairs used by the operating system to configure and control the behavior of processes and applications. They are accessible to all programs in a session and can store system settings, user preferences, or paths.
 >
->some commond environment variables are $PATH, $HOME, $USER, $PWD.... Try to print them on the screen and guess what are they stand for.
+>some command environment variables are $PATH, $HOME, $USER, $PWD.... Try to print them on the screen and guess what are they stand for.
 
 ___
 **These tools—`grep`, `wc`, `history`, `alias`, and `echo`—are fundamental utilities in Unix systems. They allow you to search for patterns, count elements in files, manage your command history, create command shortcuts, and display or manipulate text in the terminal.**
@@ -659,12 +660,13 @@ ___
    - [x] use `more` or `less` to view the .fasta file
    - [x] show the first 6 rows of it on the screen
    - [x] show the last 8 rows of it on the screen
-   - [x] 
-   - [x] 
-   - [x] 
-   - [x] 
-   - [x] 
-     
+   - [x] What is the first gene in the `.fasta` file? Try to find its infomation in the `.gff3` file
+   - [x] As we know every gene ID start with `>` in the fasta file, find out how many genes in human genome
+   - [x] Write these IDs in a file called "gene_ID.txt"
+   - [x] print the last 100 history and write those about worms into a file called "worm_operation.txt"
+   - [x] logout Aoifolution 
+   - [x] alter the command in the answer to add a shortcut of `ssh` command permanently in your environment
+
 <details>
   <summary>click to see the answers</summary>
    
@@ -673,17 +675,12 @@ ___
    more Homo_sapiens.GRCh38.112.ensembl.fasta # or less Homo_sapiens.GRCh38.112.ensembl.fasta
    head -6 Homo_sapiens.GRCh38.112.ensembl.fasta # head Homo_sapiens.GRCh38.112.ensembl.fasta -n 6
    tail -8 Homo_sapiens.GRCh38.112.ensembl.fasta # tail Homo_sapiens.GRCh38.112.ensembl.fasta -n 8
-   
-   cp /home/shared/aoifolution_exercises/Homo_sapiens.GRCh38.112.ensembl.fasta elle/
-   cp /home/shared/aoifolution_exercises/Homo_sapiens.GRCh38.112.ensembl.gff3 elle/
-   mv elle/Homo_sapiens.GRCh38.112.ensembl.fasta elle/Homo_sapiens.GRCh38.112.ensembl.faa
-   rm elle/Homo_sapiens.GRCh38.112.ensembl.faa
-   mv elle/Homo_sapiens.GRCh38.112.ensembl.gff3 .
-   rm elle -r
-   mkdir worms
-   nano worm1 # then type `This worm is cool` then `ctrl + x` and `enter`
-   mv worm1 worms
-   nano worms/worm2 # then type `This worm is cool` then `ctrl + x` and `enter`
+   grep "ENSP00000064571" Homo_sapiens.GRCh38.112.ensembl.gff3
+   grep ">" Homo_sapiens.GRCh38.112.ensembl.fasta | wc -l
+   grep ">" Homo_sapiens.GRCh38.112.ensembl.fasta > gene_ID.txt
+   history 100 | grep "worm" > worm_operation.txt
+   ctrl + d
+   echo 'alias sh="ssh <username>@aoifolution.gen.tcd.ie"' >> ~/.bashrc
   ```
   
 </details>
