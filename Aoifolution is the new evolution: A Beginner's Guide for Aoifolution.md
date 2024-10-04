@@ -488,7 +488,9 @@ more Homo_sapiens.GRCh38.112.ensembl.gff3
 ___
 <br><br>
 
-## **5.Useful tools**
+## **5.Useful tools and advanced Usages**
+
+What makes unix command line powful is the build-in tools and how you combine to use them.
 
 ### ***A. grep*** 
 
@@ -504,6 +506,8 @@ This worm is cool
 >-r: Recursively search through directories.
 >
 >-n: Show the line numbers along with the matched lines.
+
+### ***B. redirection `>`*** 
 
 Previously we mentioned, for a command line, the command itself is crucial. Then you can add arguments to apply the function on and options/flags to modify the details of the function. Here we introduce **Redirection** `>` to save the output in a file:
 
@@ -533,7 +537,7 @@ Try to search "HOX" gene in the `.gff3` file, and save the output in a `HOX.tsv`
 
 >NOTE: If you use `>>`, the new output will be appended in the end of the original file.
 
-### ***B. Regular Expressions (RegEx)*** 
+### ***C. Regular Expressions (RegEx)*** 
 
 What does the **Regular Expressions** in `grep` mean? Basically, it is a grammar of patterns used to match character combinations in strings. They are an incredibly powerful tool for searching, matching, and manipulating text. 
 Many Unix commands, like `grep`, `sed`, and `awk`, support RegEx for advanced pattern matching.
@@ -542,7 +546,8 @@ RegEx allows you to search for text that matches complex patterns rather than si
 
 Considering RegEx is such a big part, I won't talk much about that here. But I recommend https://regex101.com/ to learn and test your RegEx.
 
-### ***C. wc*** 
+
+### ***D. wc*** 
 
 `wc` stands for **Word Count**, but it does more than just counting words. It can count lines, words, and characters in a file. This is especially useful when dealing with large files and you need to quickly get a sense of their size or contents. Try:
 
@@ -562,3 +567,47 @@ You can use specific options with wc:
 - `-w`: Count words only.
 - `-c`: Count characters only.
 
+### ***E. pipes `|`*** 
+
+If you used _**R**_, you might be familiar with the pipe function. It combines multiple command together, and use pipe `|` to pass the output of the last command as the input of the next.
+
+For example, you want to know how many worms there are:
+```bash
+ls worms | wc -l
+2
+```
+This is the most common way to count how many files in a directory. It firstly list all the files by `ls` command, and use pipe `|` to pass to the next, then use `wc -l` to count how many files.
+
+So, there are 2 worms in the `worms` folder. 
+
+When I say multiple command, it means you can use pipe `|` to link command til forever. What does this command want to find? 
+
+`grep "homeobox" Homo_sapiens.GRCh38.112.ensembl.gff3 | grep "protein_coding" | grep "^19" | grep "+" | wc -l`
+
+<details>
+  <summary>the answers</summary>
+   
+  This command wants to find in human, how many protein coding homeobox genes on chromsome 19 positive strand.
+</details>
+
+**`ls`/`grep` and  `| wc -l` is the most frequent used command. It can help you quickly to know the numbers of files or the numbers of the target you want to know in the folder.**
+
+### ***F. history*** 
+Simply type this and see what happpens:
+```bash
+history
+```
+You can see a list of the commands that you’ve executed in your current terminal session. This is useful for recalling past commands without retyping them, or for scripting a series of commands.
+
+You can also limit the number of commands shown by history:
+```bash
+history 10  # Shows the last 10 commands
+```
+You can re-run a command from your history by referencing its command number:
+```bash
+!45  # Re-run command number 45
+```
+Use pipe `|` and other command to search your history:
+```bash
+history | grep "worm"
+```
