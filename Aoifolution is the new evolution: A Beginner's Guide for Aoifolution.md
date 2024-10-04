@@ -1,8 +1,8 @@
 # A Beginner's Guide for Aoifolution
 
-Children today have an entirely different way of interacting with electronic devices. Most of them own a smartphone, tablet, or even a VR device earlier than they get a laptop. To them, it feels more intuitive to swipe and tap on a touchscreen than to use other input methods. 
+Children today have an entirely different way of interacting with electronic devices. Most of them own a smartphone, tablet, or even a VR device earlier than they get a laptop. To them, it feels more intuitive to swipe and tap on a touchscreen than to use other input methods.
 
-However, in the past, keyboards were the primary way to interact with electronic devices (after teletype machines and punch cards). Even the mouse only became widespread after the advent of graphical user interfaces (GUI). 
+However, in the past, keyboards were the primary way to interact with electronic devices (after teletype machines and punch cards). Even the mouse only became widespread after the advent of graphical user interfaces (GUI).
 
 So, you might find **command-line** operating systems unfamiliar, but that's perfectly fine — everyone has a beginning.
 
@@ -12,32 +12,31 @@ ___
 _**But first,**_
 ## **_Why_** is the **command-line tool** used in bioinformatics?
 
-After getting used to modern smart devices, going back to using a keyboard for input might seem primitive. But why do we still do it? 
+After getting used to modern smart devices, going back to using a keyboard for input might seem primitive. But why do we still do it?
 
-While many bioinformatics tools provide **graphical user interfaces (GUIs)** (such as MEGA and Geneious), making them more user-friendly for researchers, these tools, along with the hardware they run on (your personal computer), can become very limited when processing large datasets. 
-The same computation that might take years on your local computer can be completed in hours on a **high-performance computing (HPC)** system like Aoifolution. 
-<br><br>
+While many bioinformatics tools provide **graphical user interfaces (GUIs)** (such as MEGA and Geneious), making them more user-friendly for researchers, these tools, along with the hardware they run on (your personal computer), can become very limited when processing large datasets. The same computation that might take years on your local computer can be completed in hours on a **high-performance computing (HPC)** system like Aoifolution.
+
+<br>
 
 Most HPC systems operate on **Linux/Unix environments**, where **command-line interfaces (CLIs)** are the standard mode of interaction. This method offers several advantages:
 
-
 **1. Efficiency and Flexibility**
-   
+
 The command line allows you to precisely control complex settings in bioinformatics software through various parameters, and it enables batch processing via scripting. This is crucial for handling large-scale biological data, such as transcriptomic or genomic analyses. By fully utilizing HPC resources, you can significantly improve your efficiency.
 
 **2. Reproducibility and Compatibility**
-   
+
 Reproducibility is a cornerstone of any experiment, meaning that under the same conditions, others should be able to reproduce the same results. The command line provides a simple yet comprehensive way to document bioinformatics analysis protocols, unlike vague GUI instructions like “right-click this icon and select that option.” Moreover, software interfaces can vary across operating systems, but command-line tools are often **cross-platform compatible**, allowing you to run the same workflows on different systems (Linux, macOS, Windows) without worrying about platform-specific differences.
 
 **3. Development, Maintenance, and Integration**
-   
+
 For these reasons, most bioinformatics software is designed for command-line interaction. Designing and maintaining a GUI is more complex, as it requires attention to compatibility and resource usage. Command-line tools, however, allow developers to focus on core functionality. Additionally, they are easier to integrate into scripts, pipelines, and automated processes, making them more versatile for large-scale or repetitive tasks.
 
 <br><br>
 ___
 ## **_What_** is **Aoifolution**?
 
-As we said, Aoifolution is a high-performance computing (HPC) system.  Here is its tech-specs: 
+Aoifolution is a high-performance computing (HPC) system. Here are its tech specs: 
 - Dell PowerEdge R740, purchased April 2021
 - 2 x Intel Xeon Silver 4210R CPU @ 2.40GHz (10 cores, 20 threads)
 - 2 x 500 GB SSD 
@@ -47,7 +46,8 @@ As we said, Aoifolution is a high-performance computing (HPC) system.  Here is i
 
 As you can see, Aoifolution is probably 10 times more powerful than your local computer. It is more like a **cluster** of many computers.
 
-Everytime when you log in Aoifolution (SSH), it pops the system information: 
+Every time you log into Aoifolution (SSH), you will see system information like this:
+
 ```bash
 li@LOCAL ~
 $ ssh liyuanshuo@aoifolution.gen.tcd.ie
@@ -72,6 +72,7 @@ Run 'do-release-upgrade' to upgrade to it.
 No mail.
 Last login: Mon Sep 30 17:27:00 2024 from 10.6.48.122
 ```
+
 It shows Aoifolution is using Ubuntu 20.10.
 <br><br>
 
@@ -103,11 +104,11 @@ Examples include GNU/Linux OS (where the kernel is Linux) and macOS (where the k
 ___
 # **_How_** to use Aoifolution 
 
-After all the old man's rambling, this is finally the session to teach you how to handle Aoifelution.
+After all the old man's rambling, now it's time to teach you how to use Aoifolution.
 
 ## **1. SSH to Aoifolution**
    
-   SSH (Secure Shell Protocol)  is a most notable applications for remote login and command-line execution.
+   SSH (Secure Shell Protocol)  is an essential tool for remote login and command-line execution.
    ```bash
    ssh <username>@aoifolution.gen.tcd.ie
    ```
@@ -121,7 +122,7 @@ Don't be panic. Type `yes` and press Enter. This will add the remote device's fi
 
 >TIPS: Nothing will appear on the screen when you enter your password, so don't freak out.
 
->TIPS: Use up ⬆ and down ⬇ arrow to select the command you typed before so you don't need to type it again
+>TIPS: Use up ⬆ and down ⬇ arrow to select the command you typed before, so you don't need to type it again
 
 <br><br>
 
@@ -138,7 +139,7 @@ Don't be panic. Type `yes` and press Enter. This will add the remote device's fi
    liyuanshuo@aoifolution:~$ pwd
    /home/liyuanshuo
    ```
-   `pwd` means `print work directory`, it shows the current directory where you are right now. It works in everywhere.
+   `pwd` means `print work directory`. It shows the current directory you are in.
 
    `home/` is the home directory for Aoifolution, and you are one of the users under it.
 
@@ -155,9 +156,9 @@ Don't be panic. Type `yes` and press Enter. This will add the remote device's fi
    liyuanshuo@aoifolution:~$ ls
    
    ```
-   **Nothing!!** It makes sense if this is your first time log in your server, becasue you have nothing yet.
+   **Nothing!!** It makes sense if this is your first time logging into the server, because you have nothing yet.
    
-   `ls` means `list`. It list all files and folders in the current directory.
+   `ls` means "list". It lists all files and folders in the current directory.
    <br><br>
 
 ### ***C. Where shoud I go? try:***
@@ -165,28 +166,28 @@ Don't be panic. Type `yes` and press Enter. This will add the remote device's fi
    liyuanshuo@aoifolution:~$ cd ..
 
    ```
-   `cd` means `change current directory`, and `..` means the parent directory of the current.
+   `cd` means `change current directory`, and `..` means the parent directory of the current one.
 
-   `cd` is the **command** part of this command line, it is the core of each command and it tells the computer what function you want to use. `..` is the **Arguments** part, it goes after the command to tell the computer the objects that you want to function on. It can be files, path, directory or others.
+   `cd` is the **command** part of this command line, it is the core of each command and tells the computer what function you want to use. `..` is the **argument** part, it goes after the command to tell the computer the objects that you want to function on. It can be files, paths, directories, or others.
    <br><br>
 
-   >TASK: Now try to find out where are you now
+   >TASK: Now try to find out where you are now.
    
-   >TASK: List all files and folder in the current directory
+   >TASK: List all files and folders in the current directory.
    <br>
 
-   **Voilà**, you can see every users on Aoifolution and each person have one home directory. You could find yourself and maybe other peoples' name in it.
+   **Voilà**, you can see every user on Aoifolution, and each person has one home directory. You might find yourself and maybe other people’s names in it.
    <br><br>
    
 ### ***D. When were they here?***
    
-   If you want to know infomation about them and their directory, you can try:
+   If you want to know more information about the files and their directory, you can try:
    ```bash
    ls -l
    ```
-   Here, `ls -l` shows more detailed **l**ong format of the files and folders, including permission, owner, size and so on.
+   Here, `ls -l` shows more detailed **l**ong format of the files and folders, including permissions, owner, size, and so on.
    
-   `-l` is the options/flags of the command. It modify the details of the command. It could be a single letter such as  `-l` or a full word   `--all`. 
+   `-l` is the **options/flags** of the command. It modifies the details of the command. It could be a single letter, such as  `-l`, or a full word `--all`. 
 
    >NOTE: **command, arguments and options/flags constitute most of command lines. You can chech how to use a command by `<command> --help` or `<command> -h` or `man <command>` (man means manual) to read the manual**
    
@@ -195,7 +196,7 @@ Don't be panic. Type `yes` and press Enter. This will add the remote device's fi
    
 ### ***E. Homecoming***
    
-   Now, before you mess up other people's files, it is better to go back your own home directory. There are a couple different way to do it:
+   Now, before you mess up other people's files, it is better to go back to your own home directory. There are a couple of different ways to do it:
    
    ```bash
    #do you remember which command we used to change directory?
@@ -203,27 +204,27 @@ Don't be panic. Type `yes` and press Enter. This will add the remote device's fi
    cd ~ # remember, `~` always means your own home directory
    cd # if you don't have any argument after `ls`, the default directory is your home directory
    ```
-   >TIPS: You **DON'T** have to type the complete file or folder name when you write in command line. Try to press `TAB` key after you type the first few letters. The `TAB` key is usually located above the Caps Lock key. `TAB` can auto-complete the full name for you. It is very user-friendly for someone who cannot spell like me.
-   >TIPS: Double `TAB` when you need to see all the possible files or folder options, so you don't need to `ls` again in the middle of writing a command
-   <br><br>
+   >TIPS: You **DON’T** have to type the complete file or folder name when you write in the command line. Try to press the `TAB` key after typing the first few letters. The `TAB` key is usually located above the `Caps Lock` key. `TAB` can auto-complete the full name for you. It’s very user-friendly for someone who cannot spell like me.
+   >
+   >TIPS: Double `TAB` when you need to see all the possible file or folder options, so you don’t need to `ls` again in the middle of writing a command.
+<br><br>
    
    
 ### ***F. Path, path, path***
 
-   Now you’ve learned how to navigate to different directories, how to see what’s inside each folder, and how to check your current location. You also learned that in the file system, `..` refers to the parent directory (one level up from the current directory), `~` is your home directory, and `.` represents the current directory (which you can see when using the pwd command). The address of a file or folder in the file system is called **path**, showing how to navigate to it from the root directory.
+Now you’ve learned how to navigate to different directories, see what’s inside each folder, and check your current location. You also learned that in the file system, `..` refers to the parent directory (one level up from the current directory), `~` is your home directory, and `.` represents the current directory (which you can see when using the pwd command). The address of a file or folder in the file system is called **path**, showing how to navigate to it from the root directory.
 
-   It may not seem as fun as simply double-clicking in a graphical user interface (GUI) like Finder, and you're right—it takes more effort.
-   Instead of clicking around, you need to type the full path to tell the system where to go. There are two types of paths:
+It may not seem as fun as simply double-clicking in a graphical user interface (GUI) like Finder, and you're right—it takes more effort. Instead of clicking around, you need to type the full path to tell the system where to go. There are two types of paths:
 
    -**Absolute Path**: An absolute path starts from the root directory (/) and specifies the full path to a file or directory. It remains the same regardless of the current working directory.
 
-      **Example**: /home/user/documents/file.txt
+      **Example** : /home/user/documents/file.txt
 
    -**Relative Path**: A relative path starts from the current working directory and provides a path to a file or directory relative to that location. It uses . or .. to start.
 
       **Example**: ./documents/file.txt or ../file.txt
 
-   As you may have noticed, different directory levels in the file system are separated by `/`.
+As you may have noticed, different directory levels in the file system are separated by `/`.
    
 
 <br><br>
@@ -272,7 +273,7 @@ You can make folder in another exist folder
 ```bash
 mkdir elle1/elle3
 ```
-However you cannot make folder in an not exist folder
+However you cannot make folder in an non-exist folder
 ```bash
 mkdir elle4/elle5
 mkdir: cannot create directory 'elle4/elle5': No such file or directory
@@ -286,7 +287,7 @@ The simplest way to make an empty file is `touch`
 touch worm # why would anyone do this?
 ls
 ```
-You can see there is a new file called `worm` but it is empty. Usually, if you want to build a file, you do want to enter something to save in it. Here, you need Text editor Software to do it. 
+You can see there is a new file called `worm` but it is empty. Usually, if you want to build a file, you do want to enter something to save in it. Here, you need **Text editor Software** to do it. 
 
 The most powerful text editor is called **Vim**. 
 
@@ -329,9 +330,9 @@ ls elle2
 >NOTE: `mv` command actually do two things at once: copy file to DEST and remove the orginal file.
 
 ### ***D. Rename a file***
-Command line doesn't have a function for rename!!!
+Command line doesn’t have a dedicated function for renaming!
 
-But think about this: the logic of **rename** is to move a file with OLD_NAME in to a file with NEW_NAME. Do you know how to do it now?
+But think about this: the logic of **renaming** is to move a file with OLD_NAME in to a file with NEW_NAME. Do you know how to do it now?
 
 Try to renmae `worm3` in `/elle2` as `worm2`
 
@@ -803,9 +804,9 @@ bash nap.sh # run the .sh script with bash
 **Then count to 10 in your heart.**
 
 ### ***A. Running Jobs in the Background `&`*** 
-Normally, when you run a command in the terminal, it blocks the terminal until the command completes (so you can do nothing til I finish my napping). If you want to keep using the terminal while a process runs, you can run the command in the background by use the `&` symbol after the command:
+Normally, when you run a command in the terminal, it blocks the terminal until the command completes (so you can do nothing until I finish my napping.). If you want to keep using the terminal while a process runs, you can run the command in the background by use the `&` symbol after the command:
 
->before that, lets make the nap longer. Do you remeber how to use the text editer to change the content of a file?
+>before that, lets make the nap longer. Do you remeber how to use the text editor to change the content of a file?
 > ```bash
 > nano nap.sh # then change the number from 10 to 100
 > ```
@@ -840,7 +841,7 @@ bash nap.sh #run a job
 bg %1 # Use the `bg` command to resume the job in the background.
 fg %1 # Use the `fg` to bring the job back to the foreground:
 ```
->TIPS: this is a very useful combination. Sometimes you want to have a trial run on your script first to see if it's work, then pause it and put it to backgroud.
+>TIPS: this is a very useful combination. Sometimes you want to have a trial run on your script first to see if it works, then pause it and put it to backgroud.
 
 ### ***E. Killing a Job `kill`*** 
 
@@ -855,3 +856,6 @@ kill %1  # Kill job 1
 ```bash
 htop
 ```
+<br><br><br>
+---
+https://cmdchallenge.com/
