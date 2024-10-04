@@ -111,6 +111,14 @@ After all the old man's rambling, this is finally the session to teach you how t
    ```bash
    ssh <username>@aoifolution.gen.tcd.ie
    ```
+If this is your first time connect to Aoifolution, you will see this: 
+```bash
+The authenticity of host '192.168.1.10' can't be established.
+ECDSA key fingerprint is SHA256:abc123....
+Are you sure you want to continue connecting (yes/no)?
+```
+Don't be panic. Type `yes` and press Enter. This will add the remote device's fingerprint to your known hosts file, allowing future connections.
+
 >TIPS: Nothing will appear on the screen when you enter your password, so don't freak out.
 
 >TIPS: Use up ⬆ and down ⬇ arrow to select the command you typed before so you don't need to type it again
@@ -133,12 +141,18 @@ After all the old man's rambling, this is finally the session to teach you how t
    `pwd` means `print work directory`, it shows the current directory where you are right now. It works in everywhere.
 
    `home/` is the home directory for Aoifolution, and you are one of the users under it.
+
+   >NOTE: **directory? folder?**
+>
+> Folder and directory are essentially the same thing, but the terms are used in different contexts:
+> Folder is more commonly used in graphical user interfaces (GUIs), like in Windows or macOS, where files and directories are represented visually as folders.
+> Directory is used more often in command-line interfaces (CLI) or Unix/Linux environments. It refers to the same concept: a container that organizes files and other directories.
+
    <br><br>
 
 ### ***B. What do you have in your home directory? try:***
    ```bash
    liyuanshuo@aoifolution:~$ ls
-
    
    ```
    **Nothing!!** It makes sense if this is your first time log in your server, becasue you have nothing yet.
@@ -196,7 +210,7 @@ After all the old man's rambling, this is finally the session to teach you how t
    
 ### ***F. Path, path, path***
 
-   Now you’ve learned how to navigate to different directories, how to see what’s inside each folder, and how to check your current location. You also learned that in the file system, `..` refers to the parent directory (one level up from the current directory), `~` is your home directory, and `.` represents the current directory (which you can see when using the pwd command).
+   Now you’ve learned how to navigate to different directories, how to see what’s inside each folder, and how to check your current location. You also learned that in the file system, `..` refers to the parent directory (one level up from the current directory), `~` is your home directory, and `.` represents the current directory (which you can see when using the pwd command). The address of a file or folder in the file system is called **path**, showing how to navigate to it from the root directory.
 
    It may not seem as fun as simply double-clicking in a graphical user interface (GUI) like Finder, and you're right—it takes more effort.
    Instead of clicking around, you need to type the full path to tell the system where to go. There are two types of paths:
@@ -264,6 +278,9 @@ mkdir elle4/elle5
 mkdir: cannot create directory 'elle4/elle5': No such file or directory
 ```
 ### ***B. make a file***
+
+>NOTE: A file is a container that stores data, such as text, images, videos, or executables. Files are the basic unit of storage in a computer system.
+
 The simplest way to make an empty file is `touch`
 ```bash
 touch worm # why would anyone do this?
@@ -290,24 +307,24 @@ Copy and paste is one command in linux: `cp`. It use as `cp` [what] [to where]
 ```bash
 cp worm elle1/
 ls elle1/
-worm
+> worm
 ```
 If you give a new file name instead of a folder in the second argument, `cp` will copy the file **AND** rename it to the new name. 
 ```bash
 cp worm elle1/worm2
 ls elle1/
-worm  worm2
+> worm  worm2
 ```
 `mv`, which is move a file to some where, uses the same rule as `cp`
 ```
 mv worm elle2/
 mv elle1/worm elle2/worm3
 ls
-elle1  elle2
+> elle1  elle2
 ls elle1
-worm2
+> worm2
 ls elle2
-worm  worm3
+> worm  worm3
 ```
 >NOTE: `mv` command actually do two things at once: copy file to DEST and remove the orginal file.
 
@@ -324,7 +341,7 @@ Try to renmae `worm3` in `/elle2` as `worm2`
   ```bash
     mv elle2/worm3 elle2/worm2
     ls elle2
-    worm  worm2
+    > worm  worm2
   ```
 </details>
 
@@ -333,7 +350,7 @@ The command for delete is `rm`, refers to remove a file.
 ```bash
 rm elle2/worm3
 ls elle2
-worm
+> worm
 ```
 Now try it on a directory:
 ```bash
@@ -358,11 +375,35 @@ Check how to solve the issue with `rm --help`:
 
 >NOTE: As opposed to `mkdir`, deleted a folder is `rmdir`, but it only function on empty folder
 
+### ***G. Wildcards***
+In Unix/Linux, **wildcards** are special characters that help you work with multiple files and directories at once. They are particularly useful for selecting groups of files without having to list them individually. This can be very handy when you want to manage a large number of files efficiently.
+
+Wildcards include characters like `*`, `?`, and `[]` which allow you to perform operations on files that match certain patterns.
+
+The `*` wildcard matches zero or more characters in a filename. It’s very versatile and is often used to handle files that share common naming patterns.
+```
+ls *.txt  # Lists all files with a .txt extension
+```
+The `?` wildcard matches exactly one character.
+```
+ls worms/worm?
+> worms/worm1  worms/worm2  worms/worm3
+```
+The square brackets [] allow you to specify a range or a set of characters to match.
+```
+ls worms/worm[2-3]
+> worms/worm2  worms/worm3
+```
+
+Wildcards can be used with `mv`, `cp`, `rm` and other command as well.
+
+
 <br><br>
 ___
    Now you should be able to do the basic operation . Try completing the following exercises:
 
    - [x] List the files in `/home/shared/aoifolution_exercises`
+   - [x] List the `.fasta` files in `/home/shared/aoifolution_exercises`
    - [x] Copy the files there to `/elle` while you are in your home directory (use double TAB for autocompletion).
    - [x] rename the `.fasta` file to `.faa` file
    - [x] Delete the `.faa` file that you just renamed
@@ -377,6 +418,7 @@ ___
    
   ```bash
    ls /home/shared/aoifolution_exercises/
+   ls /home/shared/aoifolution_exercises/*.fasta
    cp /home/shared/aoifolution_exercises/Homo_sapiens.GRCh38.112.ensembl.fasta elle/
    cp /home/shared/aoifolution_exercises/Homo_sapiens.GRCh38.112.ensembl.gff3 elle/
    mv elle/Homo_sapiens.GRCh38.112.ensembl.fasta elle/Homo_sapiens.GRCh38.112.ensembl.faa
@@ -404,16 +446,16 @@ You should have a `.gff3` file, a `/worm` folder with a cool worm1 and a not coo
 To quick view a file, you can use `cat` command and the file you want to view. Now use it to see which worm is the cool worm:
 ```bash
 cat worms/worm1
-This worm is cool
+> This worm is cool
 cat worms/worm2
-This worm is NOT cool
+> This worm is NOT cool
 ```
 
 `cat` doesn't mean the meow cat :cat2:, but the short for **concatenate**, which use for concatenate files together and print on the screen. Try to use it on worm1 and worm2 
 ```bash
 cat worms/worm1 worms/worm2
-This worm is cool
-This worm is NOT cool
+> This worm is cool
+> This worm is NOT cool
 ```
 Great! Now try to view the `.gff3` file:
 ```bash
@@ -472,7 +514,7 @@ more Homo_sapiens.GRCh38.112.ensembl.gff3
    
    >NOTE: haven't you learn anything yet? press q to quit the viewing
    >
-   >>NOTE: use `more -- help` to read the manual before you apply the command
+   >>NOTE: use `more --help` to read the manual before you apply the command
   
 </details>
 
@@ -513,14 +555,14 @@ Previously we mentioned, for a command line, the command itself is crucial. Then
 
 ```bash
 cat worms/worm1 worms/worm2
-This worm is cool
-This worm is NOT cool
+> This worm is cool
+> This worm is NOT cool
 ```
 ```bash
 cat worms/worm1 worms/worm2 > worms.txt
 cat worms.txt
-This worm is cool
-This worm is NOT cool
+> This worm is cool
+> This worm is NOT cool
 ```
 This is very useful when you want to save your output result. And it can be combined to use with other command.
 
@@ -535,7 +577,7 @@ Try to search "HOX" gene in the `.gff3` file, and save the output in a `HOX.tsv`
   ```
 </details>
 
->NOTE: If you use `>>`, the new output will be appended in the end of the original file.
+>NOTE: If you use `>>`, the new output will be appended at the end of the original file.
 
 ### ***C. Regular Expressions (RegEx)*** 
 
@@ -553,7 +595,7 @@ Considering RegEx is such a big part, I won't talk much about that here. But I r
 
 ```bash
 wc worms/worm1
-1 4 18 worms/worm1
+> 1 4 18 worms/worm1
 
 ```
 This output shows:
@@ -574,7 +616,7 @@ If you used _**R**_, you might be familiar with the pipe function. It combines m
 For example, you want to know how many worms there are:
 ```bash
 ls worms | wc -l
-2
+> 2
 ```
 This is the most common way to count how many files in a directory. It firstly list all the files by `ls` command, and use pipe `|` to pass to the next, then use `wc -l` to count how many files.
 
@@ -627,7 +669,7 @@ ll
 However, now try to logout Aoifolution and login and try `ll` agian.
 >TIPS: you can logout Aoifolution by press `ctrl` + `d`. If you press them again you can exit the terminal. 
 ```bash
-ll: command not found
+> ll: command not found
 ```
 This is becasue the alias will disappear after you logout. You can make these aliases permanent by adding them to your `.bashrc`. `.bashrc` is like a configuration file that loaded everytime you login the server. Simply use this command to make this alias permanent:
 ```bash
@@ -649,8 +691,66 @@ echo "This worm is also cool" > worms/worm3 # you can use `echo` to write to a f
 >
 >some command environment variables are $PATH, $HOME, $USER, $PWD.... Try to print them on the screen and guess what are they stand for.
 
+### ***I. sed*** 
+When you not only need to search something with `grep` but also want to replace them, you can use the stream editor `sed`. 
+
+`sed` is a powerful stream editor in Unix/Linux used for parsing and transforming text. It reads input, processes it according to provided instructions, and outputs the result. `sed` is often used for tasks like searching, replacing, deleting, or inserting text in files or streams. It is just like the "string" package in R.
+
+The basic function is search and replace: 
+```bash
+sed 's/search_pattern/replacement/g' file.txt
+```
+Here, `s` means this is a **Substitute** command and `g` is **Global**, meaning it will replace all occurrences in each line, not just the first.
+
+Lets try to replace all worms in `worms.txt` into elle and save it to `elle.txt` :
+```bash
+sed 's/worm/elle/g' worms.txt > elle.txt
+cat elle.txt
+> This elle is cool
+> This elle is NOT cool
+```
+
+However, it doen't change the orginal file:
+```sed
+cat worms.txt
+> This worm is cool
+> This worm is NOT cool
+```
+
+**To turn elle into worm permanently**, you can use `-i` option to edit on the orginal file:
+
+```bash
+sed 's/elle/worm/g' -i  elle.txt
+cat elle.txt
+> This worm is cool
+> This worm is NOT cool
+```
+
+`sed` allows you do more with different options, such as delete lines others. Check its help page to see more.
+
+### ***J. find*** 
+
+`find` is a command used to search for files and directories within a directory hierarchy based on different criteria such as name, size, type, or modification time. 
+
+For example, you want to search a file named `worms.txt` in the current directory:
+```bash
+find . -name "worms.txt"
+> ./worms.txt
+```
+Or you want to find all `.txt` files `f` or directories `d`.
+
+```bash
+find . -name "*.txt"  # Find all .txt files
+> ./elle.txt
+> ./worm_operation.txt
+> ./worms.txt
+find . -type d -name "worms"  # Find directories with specific name
+> ./worms
+```
+`find` works well with larger datasets, and you can search by size, time or others. It also works with pipes to execute other command. Check its help page to see more.
+
 ___
-**These tools—`grep`, `wc`, `history`, `alias`, and `echo`—are fundamental utilities in Unix systems. They allow you to search for patterns, count elements in files, manage your command history, create command shortcuts, and display or manipulate text in the terminal.**
+**These tools—`grep`, `wc`, `history`, `alias`, `sed`, `find` and `echo`—are fundamental utilities in Unix systems. They allow you to search for patterns, count elements in files, manage your command history, create command shortcuts, and display or manipulate text in the terminal.**
 ___
 <br><br>
 
@@ -664,6 +764,7 @@ ___
    - [x] As we know every gene ID start with `>` in the fasta file, find out how many genes in human genome
    - [x] Write these IDs in a file called "gene_ID.txt"
    - [x] print the last 100 history and write those about worms into a file called "worm_operation.txt"
+   - [x] replace `worm` string in that file into `elle` in place
    - [x] logout Aoifolution 
    - [x] alter the command in the answer to add a shortcut of `ssh` command permanently in your environment
 
@@ -679,10 +780,78 @@ ___
    grep ">" Homo_sapiens.GRCh38.112.ensembl.fasta | wc -l
    grep ">" Homo_sapiens.GRCh38.112.ensembl.fasta > gene_ID.txt
    history 100 | grep "worm" > worm_operation.txt
+   sed sed 's/worm/elle/g' -i worm_operation.txt
    ctrl + d
-   echo 'alias sh="ssh <username>@aoifolution.gen.tcd.ie"' >> ~/.bashrc
+   echo 'alias sh="ssh <username>@aoifolution.gen.tcd.ie"' >> ~/.bashrc  # this is useful. Everytime to login the server, just type `sh`
   ```
   
 </details>
 
+<br><br>
+
 ___
+## **6. Jobs**
+
+> You don't have to do this part if you don't have a long-running process to do yet.
+
+When working on a high-performance computing (HPC) system like Aoifolution, it's common to run long-running tasks or background processes. In Unix/Linux, these tasks are called jobs. You can run, manage, and control these jobs easily using several commands. Run this script to see:
+
+```bash
+cp /home/shared/aoifolution_exercises/nap.sh # copy the script to your home dirctory
+bash nap.sh # run the .sh script with bash
+```
+**Then count to 10 in your heart.**
+
+### ***A. Running Jobs in the Background `&`*** 
+Normally, when you run a command in the terminal, it blocks the terminal until the command completes (so you can do nothing til I finish my napping). If you want to keep using the terminal while a process runs, you can run the command in the background by use the `&` symbol after the command:
+
+>before that, lets make the nap longer. Do you remeber how to use the text editer to change the content of a file?
+> ```bash
+> nano nap.sh # then change the number from 10 to 100
+> ```
+
+```bash
+bash nap.sh &
+> [1] 962640
+```
+
+### ***B. Check Active Jobs `jobs`*** 
+If you want to see which jobs are currently running in the background, use the `jobs` command. This command lists all background jobs associated with the current terminal session.
+```bash
+jobs
+> [1]+  Running                 bash nap.sh &
+```
+Each job is assigned a job number, such as [1] in the above example, which you can use to control the job.
+
+### ***C. Bringing Jobs to the Foreground `fg`*** 
+Sometimes you may want to bring a background job back to the foreground to interact with it or terminate it manually. You can use the `fg` command followed by the job number:
+```bash
+fg %1  # Bring job 1 to the foreground
+```
+If you don’t specify a job number, fg will bring the most recent job to the foreground.
+
+### ***D. Suspending and Resuming Jobs `bg`*** 
+You can suspend a running job using **Ctrl + Z**. This pauses the job and frees up the terminal for other tasks. The suspended job can be resumed either in the background or foreground.
+
+```bash
+bash nap.sh #run a job
+^Z # ctrl +z to pasues the job
+> [1]+  Stopped                 bash nap.sh
+bg %1 # Use the `bg` command to resume the job in the background.
+fg %1 # Use the `fg` to bring the job back to the foreground:
+```
+>TIPS: this is a very useful combination. Sometimes you want to have a trial run on your script first to see if it's work, then pause it and put it to backgroud.
+
+### ***E. Killing a Job `kill`*** 
+
+If you want to terminate a background job, you can use the `kill` command followed by the job number or process ID (PID).
+
+```bash
+kill %1  # Kill job 1
+```
+
+### ***F. Monitoring Jobs and Processes `htop`*** 
+`htop` is a more powerful, interactive process viewer for Unix systems. It  offers a more user-friendly, graphical interface to monitor system resources such as CPU, memory, and running processes. We have `htop` installed on Aoifolution so simply type it to launch it:
+```bash
+htop
+```
