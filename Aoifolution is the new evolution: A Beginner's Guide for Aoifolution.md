@@ -611,3 +611,81 @@ Use pipe `|` and other command to search your history:
 ```bash
 history | grep "worm"
 ```
+
+### ***G. alias*** 
+
+If you need to use a command line a thousand times (for me it is `ls -l`), it is annoying to type it everytime. `alias` allows you to create shortcuts for long or frequently used commands. This is particularly useful when you have a command with many options that you use repeatedly.
+
+```bash
+alias ll="ls -l"
+```
+Now, instead of typing `ls -l` every time, you can simply type `ll`.
+
+```bash
+ll
+``
+However, now try to logout Aoifolution and login and try `ll` agian.
+```bash
+ll: command not found
+```
+This is becasue the alias will disappear after you logout. You can make these aliases permanent by adding them to your `.bashrc`. `.bashrc` is like a configuration file that loaded everytime you login the server. Simply use this command to make this alias permanent:
+```bash
+echo 'alias ll="ls -l"' >> ~/.bashrc
+```
+Now you can try to logout Aoifolution and login and try `ll` agian.
+
+### ***H. echo*** 
+
+The `echo` command that we used in last section is very like `print` function in other programming language. `echo` command is used to print text or variables to the terminal. It's often used in scripts to display messages or to output the value of variables.
+
+```bash
+echo "Hello, World!" # this would be the first command you learn if you learn from others, but here we teach something actually useful
+echo $HOME  # displays your home directory
+echo "This worm is also cool" > worms/worm3 # you can use `echo` to write to a file too.
+```
+
+>NOTE: the capital words with $ symbol is called **Environment Variables**. They are key-value pairs used by the operating system to configure and control the behavior of processes and applications. They are accessible to all programs in a session and can store system settings, user preferences, or paths.
+>
+>some commond environment variables are $PATH, $HOME, $USER, $PWD.... Try to print them on the screen and guess what are they stand for.
+
+___
+**These tools—`grep`, `wc`, `history`, `alias`, and `echo`—are fundamental utilities in Unix systems. They allow you to search for patterns, count elements in files, manage your command history, create command shortcuts, and display or manipulate text in the terminal.**
+___
+<br><br>
+
+   Now you should know these fundamental utilities of unix. Try completing the following exercises:
+
+   - [x] cp the human gene `.fasta` file to your home directory
+   - [x] use `more` or `less` to view the .fasta file
+   - [x] show the first 6 rows of it on the screen
+   - [x] show the last 8 rows of it on the screen
+   - [x] 
+   - [x] 
+   - [x] 
+   - [x] 
+   - [x] 
+     
+<details>
+  <summary>click to see the answers</summary>
+   
+  ```bash
+   cp /home/shared/aoifolution_exercises/Homo_sapiens.GRCh38.112.ensembl.fasta
+   more Homo_sapiens.GRCh38.112.ensembl.fasta # or less Homo_sapiens.GRCh38.112.ensembl.fasta
+   head -6 Homo_sapiens.GRCh38.112.ensembl.fasta # head Homo_sapiens.GRCh38.112.ensembl.fasta -n 6
+   tail -8 Homo_sapiens.GRCh38.112.ensembl.fasta # tail Homo_sapiens.GRCh38.112.ensembl.fasta -n 8
+   
+   cp /home/shared/aoifolution_exercises/Homo_sapiens.GRCh38.112.ensembl.fasta elle/
+   cp /home/shared/aoifolution_exercises/Homo_sapiens.GRCh38.112.ensembl.gff3 elle/
+   mv elle/Homo_sapiens.GRCh38.112.ensembl.fasta elle/Homo_sapiens.GRCh38.112.ensembl.faa
+   rm elle/Homo_sapiens.GRCh38.112.ensembl.faa
+   mv elle/Homo_sapiens.GRCh38.112.ensembl.gff3 .
+   rm elle -r
+   mkdir worms
+   nano worm1 # then type `This worm is cool` then `ctrl + x` and `enter`
+   mv worm1 worms
+   nano worms/worm2 # then type `This worm is cool` then `ctrl + x` and `enter`
+  ```
+  
+</details>
+
+___
