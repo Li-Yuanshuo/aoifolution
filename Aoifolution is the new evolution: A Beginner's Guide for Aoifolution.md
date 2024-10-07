@@ -1,4 +1,4 @@
-# A Beginner's Guide for Aoifolution
+# A Beginner's Tutorial for Aoifolution
 
 Children today have an entirely different way of interacting with electronic devices. Most of them own a smartphone, tablet, or even a VR device earlier than they get a laptop. To them, it feels more intuitive to swipe and tap on a touchscreen than to use other input methods.
 
@@ -376,7 +376,14 @@ Check how to solve the issue with `rm --help`:
 
 >NOTE: As opposed to `mkdir`, deleted a folder is `rmdir`, but it only function on empty folder
 
-### ***G. Wildcards***
+### ***G. Downloading***
+
+`wget` is used to for downloading files from the web. Simply add the download link after the command: 
+
+
+
+
+### ***H. Wildcards***
 In Unix/Linux, **wildcards** are special characters that help you work with multiple files and directories at once. They are particularly useful for selecting groups of files without having to list them individually. This can be very handy when you want to manage a large number of files efficiently.
 
 Wildcards include characters like `*`, `?`, and `[]` which allow you to perform operations on files that match certain patterns.
@@ -405,8 +412,9 @@ ___
 
    - [x] List the files in `/home/shared/aoifolution_exercises`
    - [x] List the `.fasta` files in `/home/shared/aoifolution_exercises`
-   - [x] Copy the files there to `/elle` while you are in your home directory (use double TAB for autocompletion).
-   - [x] rename the `.fasta` file to `.faa` file
+   - [x] Copy the `.fasta` file to `/elle` while you are in your home directory (use double TAB for autocompletion).
+   - [x] download the `.gff3` file from Ensembl with the link `https://ftp.ensembl.org/pub/release-112/gff3/homo_sapiens/Homo_sapiens.GRCh38.112.gff3.gz` and unzip it
+   - [x] copy and rename the `.fasta` file to `.faa` file to `/elle`
    - [x] Delete the `.faa` file that you just renamed
    - [x] Move the `.gff3` file from `/elle` to your home directory 
    - [x] Remove the entire `/elle` folder
@@ -421,7 +429,8 @@ ___
    ls /home/shared/aoifolution_exercises/
    ls /home/shared/aoifolution_exercises/*.fasta
    cp /home/shared/aoifolution_exercises/Homo_sapiens.GRCh38.112.ensembl.fasta elle/
-   cp /home/shared/aoifolution_exercises/Homo_sapiens.GRCh38.112.ensembl.gff3 elle/
+   wget https://ftp.ensembl.org/pub/release-112/gff3/homo_sapiens/Homo_sapiens.GRCh38.112.gff3.gz
+
    mv elle/Homo_sapiens.GRCh38.112.ensembl.fasta elle/Homo_sapiens.GRCh38.112.ensembl.faa
    rm elle/Homo_sapiens.GRCh38.112.ensembl.faa
    mv elle/Homo_sapiens.GRCh38.112.ensembl.gff3 .
@@ -666,7 +675,7 @@ Now, instead of typing `ls -l` every time, you can simply type `ll`.
 
 ```bash
 ll
-``
+```
 However, now try to logout Aoifolution and login and try `ll` agian.
 >TIPS: you can logout Aoifolution by press `ctrl` + `d`. If you press them again you can exit the terminal. 
 ```bash
@@ -801,9 +810,72 @@ When working on a high-performance computing (HPC) system like Aoifolution, it's
 cp /home/shared/aoifolution_exercises/nap.sh # copy the script to your home dirctory
 bash nap.sh # run the .sh script with bash
 ```
-**Then count to 10 in your heart.**
+>NOTE: A `.sh` script is a shell script file written for the Unix shell (or any Unix-like command-line interpreter).
+>
+>**Shebang** (`#!`): At the top of the script, you can see `#!/bin/bash`. This tells the system what interpreter to use to run the script.
 
-### ***A. Running Jobs in the Background `&`*** 
+
+### ***A. Change the permission of a file (chmond)*** 
+You might see this when you try to run the script:
+```bash
+> bash: nap.sh: Permission denied
+```
+**File Permissions in Unix**:
+
+There are three types of permissions:
+
+- Read (r) – Allows viewing the contents of the file.
+- Write (w) – Allows modifying the file or directory.
+- Execute (x) – Allows executing the file as a program/script.
+  
+These permissions apply to three different types of users:
+
+- Owner (u) – The user who owns the file.
+- Group (g) – The group that has access to the file.
+- Others (o) – Any other users on the system.
+
+If you run `ls -l` or `ll` (after you set up the alias), you can the permissions of a file in the first column:
+```bash
+ls -l /home/shared/aoifolution_exercises/
+> drwxrwxr-x  2 liyuanshuo liyuanshuo 4.0K Oct  7 11:22 ./
+> drwxrwxrwt 13 root       root       4.0K Oct  2 00:25 ../
+> -rwx------  1 liyuanshuo liyuanshuo  13M Oct  2 16:33 Homo_sapiens.GRCh38.112.ensembl.fasta*
+> -rwx------  1 liyuanshuo liyuanshuo 522M Oct  2 16:33 Homo_sapiens.GRCh38.112.ensembl.gff3*
+> ----------  1 liyuanshuo liyuanshuo   47 Oct  7 11:22 nap.sh*
+```
+- First character: file type - : `-`- regular file/ `d`-directory/ `l`-symbolic link ...
+- Characters 2 to 4 / 5 to 7 / 8 to 10 :  permissions for the owner/ group (group that owns the file) / others (other users on the system)
+- Each character in block: `r`- read / `w`- write / `x`- execute / `-`- no permission
+
+**`chmod`** (short for "change mode") allows you to change the permissions of a file or directory. It uses a very interesting Numeric (Octal) Permissions rules where `r` = 4, `w` = 2 and `x` = 1. The permission for the file owner, group, and others are set using a three-digit number. The digits correspond to the sum of the permissions.
+
+Here is some examples: 
+
+- `777` = Owner, group, and others can read, write, and execute.
+- `755` = Owner can read, write, and execute; group and others can only read and execute.
+- `644` = Owner can read and write; group and others can only read.
+
+So, Give read, write, and execute permissions to the owner, and read/execute permissions to the group and others:
+```bash
+chmod 755 nap.sh
+```
+
+For more usage of `chmod`, change `chmod --help` or https://en.wikipedia.org/wiki/Chmod 
+
+### ***B. Change the owner of a file (chown)*** 
+Similarly to permission, you can change the ownership of a file/folder with `chown`: 
+```bash
+chown your_username nap.sh
+```
+
+<br><br>
+
+**run the script after you do all the changes: `bash nap.sh`**
+
+**Then count to 10 in your heart.**
+<br><br>
+
+### ***C. Running Jobs in the Background `&`*** 
 Normally, when you run a command in the terminal, it blocks the terminal until the command completes (so you can do nothing until I finish my napping.). If you want to keep using the terminal while a process runs, you can run the command in the background by use the `&` symbol after the command:
 
 >before that, lets make the nap longer. Do you remeber how to use the text editor to change the content of a file?
@@ -816,7 +888,7 @@ bash nap.sh &
 > [1] 962640
 ```
 
-### ***B. Check Active Jobs `jobs`*** 
+### ***D. Check Active Jobs `jobs`*** 
 If you want to see which jobs are currently running in the background, use the `jobs` command. This command lists all background jobs associated with the current terminal session.
 ```bash
 jobs
@@ -824,14 +896,14 @@ jobs
 ```
 Each job is assigned a job number, such as [1] in the above example, which you can use to control the job.
 
-### ***C. Bringing Jobs to the Foreground `fg`*** 
+### ***E. Bringing Jobs to the Foreground `fg`*** 
 Sometimes you may want to bring a background job back to the foreground to interact with it or terminate it manually. You can use the `fg` command followed by the job number:
 ```bash
 fg %1  # Bring job 1 to the foreground
 ```
 If you don’t specify a job number, fg will bring the most recent job to the foreground.
 
-### ***D. Suspending and Resuming Jobs `bg`*** 
+### ***F. Suspending and Resuming Jobs `bg`*** 
 You can suspend a running job using **Ctrl + Z**. This pauses the job and frees up the terminal for other tasks. The suspended job can be resumed either in the background or foreground.
 
 ```bash
@@ -843,7 +915,7 @@ fg %1 # Use the `fg` to bring the job back to the foreground:
 ```
 >TIPS: this is a very useful combination. Sometimes you want to have a trial run on your script first to see if it works, then pause it and put it to backgroud.
 
-### ***E. Killing a Job `kill`*** 
+### ***G. Killing a Job `kill`*** 
 
 If you want to terminate a background job, you can use the `kill` command followed by the job number or process ID (PID).
 
@@ -851,7 +923,7 @@ If you want to terminate a background job, you can use the `kill` command follow
 kill %1  # Kill job 1
 ```
 
-### ***F. Monitoring Jobs and Processes `htop`*** 
+### ***H. Monitoring Jobs and Processes `htop`*** 
 `htop` is a more powerful, interactive process viewer for Unix systems. It  offers a more user-friendly, graphical interface to monitor system resources such as CPU, memory, and running processes. We have `htop` installed on Aoifolution so simply type it to launch it:
 ```bash
 htop
