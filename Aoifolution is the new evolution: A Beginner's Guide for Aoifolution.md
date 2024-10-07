@@ -74,8 +74,8 @@ Last login: Mon Sep 30 17:27:00 2024 from 10.6.48.122
 ```
 
 It shows Aoifolution is using Ubuntu 20.10.
-<br><br>
 
+<br><br>
 ### Linux? Unix? Ubuntu? Kernel? OS?
 
 > If you don’t have a strong computer background, all these computer terms might feel overwhelming. Let’s break them down in the simplest way possible.
@@ -125,7 +125,6 @@ Don't be panic. Type `yes` and press Enter. This will add the remote device's fi
 >TIPS: Use up ⬆ and down ⬇ arrow to select the command you typed before, so you don't need to type it again
 
 <br><br>
-
 ## **2. Wandering in the file system**
 
    ```bash
@@ -149,8 +148,7 @@ Don't be panic. Type `yes` and press Enter. This will add the remote device's fi
 > Folder is more commonly used in graphical user interfaces (GUIs), like in Windows or macOS, where files and directories are represented visually as folders.
 > Directory is used more often in command-line interfaces (CLI) or Unix/Linux environments. It refers to the same concept: a container that organizes files and other directories.
 
-   <br><br>
-
+<br><br>
 ### ***B. What do you have in your home directory? try:***
    ```bash
    liyuanshuo@aoifolution:~$ ls
@@ -159,8 +157,8 @@ Don't be panic. Type `yes` and press Enter. This will add the remote device's fi
    **Nothing!!** It makes sense if this is your first time logging into the server, because you have nothing yet.
    
    `ls` means "list". It lists all files and folders in the current directory.
-   <br><br>
 
+<br><br>
 ### ***C. Where shoud I go? try:***
    ```bash
    liyuanshuo@aoifolution:~$ cd ..
@@ -177,8 +175,8 @@ Don't be panic. Type `yes` and press Enter. This will add the remote device's fi
    <br>
 
    **Voilà**, you can see every user on Aoifolution, and each person has one home directory. You might find yourself and maybe other people’s names in it.
-   <br><br>
-   
+
+<br><br>  
 ### ***D. When were they here?***
    
    If you want to know more information about the files and their directory, you can try:
@@ -192,8 +190,8 @@ Don't be panic. Type `yes` and press Enter. This will add the remote device's fi
    >NOTE: **command, arguments and options/flags constitute most of command lines. You can chech how to use a command by `<command> --help` or `<command> -h` or `man <command>` (man means manual) to read the manual**
    
    >TASK: Use `ls --help` and `man ls` to read the manual of `ls` and compare the difference.
-   <br><br>
-   
+
+<br><br>
 ### ***E. Homecoming***
    
    Now, before you mess up other people's files, it is better to go back to your own home directory. There are a couple of different ways to do it:
@@ -207,9 +205,8 @@ Don't be panic. Type `yes` and press Enter. This will add the remote device's fi
    >TIPS: You **DON’T** have to type the complete file or folder name when you write in the command line. Try to press the `TAB` key after typing the first few letters. The `TAB` key is usually located above the `Caps Lock` key. `TAB` can auto-complete the full name for you. It’s very user-friendly for someone who cannot spell like me.
    >
    >TIPS: Double `TAB` when you need to see all the possible file or folder options, so you don’t need to `ls` again in the middle of writing a command.
+
 <br><br>
-   
-   
 ### ***F. Path, path, path***
 
 Now you’ve learned how to navigate to different directories, see what’s inside each folder, and check your current location. You also learned that in the file system, `..` refers to the parent directory (one level up from the current directory), `~` is your home directory, and `.` represents the current directory (which you can see when using the pwd command). The address of a file or folder in the file system is called **path**, showing how to navigate to it from the root directory.
@@ -226,7 +223,6 @@ It may not seem as fun as simply double-clicking in a graphical user interface (
 
 As you may have noticed, different directory levels in the file system are separated by `/`.
    
-
 <br><br>
 ___
    Now you should be able to navigate around the server and explore its contents. Try completing the following exercises:
@@ -253,8 +249,8 @@ ___
 </details>
    
 ___
-<br><br>
 
+<br><br>
 ## **3.Make some changes**
 Looks like your home directory is still empty. Lets make some changes.
 
@@ -278,6 +274,8 @@ However you cannot make folder in an non-exist folder
 mkdir elle4/elle5
 mkdir: cannot create directory 'elle4/elle5': No such file or directory
 ```
+
+<br><br>
 ### ***B. make a file***
 
 >NOTE: A file is a container that stores data, such as text, images, videos, or executables. Files are the basic unit of storage in a computer system.
@@ -303,6 +301,7 @@ You would see yourself inside the eidter interface. Type something like `Worms a
 >
 >NOTE: The best way to edit a txt/tsv/csv file is use sofewares in your own local computer after you set up the SSHF (personally experience)
 
+<br><br>
 ### ***C. copy, paste and move***
 Copy and paste is one command in linux: `cp`. It use as `cp` [what] [to where] 
 ```bash
@@ -329,6 +328,7 @@ ls elle2
 ```
 >NOTE: `mv` command actually do two things at once: copy file to DEST and remove the orginal file.
 
+<br><br>
 ### ***D. Rename a file***
 Command line doesn’t have a dedicated function for renaming!
 
@@ -346,6 +346,7 @@ Try to renmae `worm3` in `/elle2` as `worm2`
   ```
 </details>
 
+<br><br>
 ### ***E. DELETE（permanently）***
 The command for delete is `rm`, refers to remove a file. 
 ```bash
@@ -376,13 +377,24 @@ Check how to solve the issue with `rm --help`:
 
 >NOTE: As opposed to `mkdir`, deleted a folder is `rmdir`, but it only function on empty folder
 
+<br><br>
 ### ***G. Downloading***
 
-`wget` is used to for downloading files from the web. Simply add the download link after the command: 
+`wget` is used to for downloading files from the web. Simply add the download link after the command. For example, you can use this command to download this document:
+```bash
+wget "https://raw.githubusercontent.com/Li-Yuanshuo/aoifolution/refs/heads/main/Aoifolution%20is%20the%20new%20evolution%3A%20A%20Beginner's%20Guide%20for%20Aoifolution.md"
+```
 
+>NOTE: `curl` is also a powerful command-line tool to transfer data using various protocols. It's commonly used to download files over HTTP, HTTPS, FTP, and others.
 
+Large files always be downloaded in `.gz` or `.tar.gz` compressed format. You can use
+```bash
+gunzip myfile.gz # for `.gz` file
+tar -xvzf myarchive.tar.gz  # for `.tar.gz` file
+```
+>NOTE: `.gz` files typically compress a single file, while `.tar.gz` (or `.tgz`) files are used to archive multiple files and then compress the resulting archive.
 
-
+<br><br>
 ### ***H. Wildcards***
 In Unix/Linux, **wildcards** are special characters that help you work with multiple files and directories at once. They are particularly useful for selecting groups of files without having to list them individually. This can be very handy when you want to manage a large number of files efficiently.
 
@@ -405,7 +417,6 @@ ls worms/worm[2-3]
 
 Wildcards can be used with `mv`, `cp`, `rm` and other command as well.
 
-
 <br><br>
 ___
    Now you should be able to do the basic operation . Try completing the following exercises:
@@ -415,8 +426,8 @@ ___
    - [x] Copy the `.fasta` file to `/elle` while you are in your home directory (use double TAB for autocompletion).
    - [x] download the `.gff3` file from Ensembl with the link `https://ftp.ensembl.org/pub/release-112/gff3/homo_sapiens/Homo_sapiens.GRCh38.112.gff3.gz` and unzip it
    - [x] copy and rename the `.fasta` file to `.faa` file to `/elle`
-   - [x] Delete the `.faa` file that you just renamed
-   - [x] Move the `.gff3` file from `/elle` to your home directory 
+   - [x] Delete the `.fasta` file 
+   - [x] Move the `.faa` file from `/elle` to your home directory 
    - [x] Remove the entire `/elle` folder
    - [x] Make a folder called `worms`
    - [x] Use `nano` to make a new file called `worm1`, write `This worm is cool` and save it. Move it in the `worms` folder
@@ -430,10 +441,10 @@ ___
    ls /home/shared/aoifolution_exercises/*.fasta
    cp /home/shared/aoifolution_exercises/Homo_sapiens.GRCh38.112.ensembl.fasta elle/
    wget https://ftp.ensembl.org/pub/release-112/gff3/homo_sapiens/Homo_sapiens.GRCh38.112.gff3.gz
-
-   mv elle/Homo_sapiens.GRCh38.112.ensembl.fasta elle/Homo_sapiens.GRCh38.112.ensembl.faa
-   rm elle/Homo_sapiens.GRCh38.112.ensembl.faa
-   mv elle/Homo_sapiens.GRCh38.112.ensembl.gff3 .
+   gunzip Homo_sapiens.GRCh38.112.gff3.gz
+   cp elle/Homo_sapiens.GRCh38.112.ensembl.fasta elle/Homo_sapiens.GRCh38.112.ensembl.faa
+   rm Homo_sapiens.GRCh38.112.ensembl.fasta
+   mv elle/Homo_sapiens.GRCh38.112.ensembl.faa .
    rm elle -r
    mkdir worms
    nano worm1 # then type `This worm is cool` then `ctrl + x` and `enter`
@@ -483,6 +494,7 @@ cat Homo_sapiens.GRCh38.112.ensembl.gff3
   
 </details>
 
+<br><br>
 ### ***B. Head or tail***
 
 Obviously, big files like `.gff3` can't be printed on the screen at once. Let's just use `head` command to view the first few rows of the `.gff3` file. 
@@ -512,6 +524,7 @@ Here are the first 10 rows of the `.gff3` file. Use `head --help` to check how t
 
 >NOTE: There is a useful option for `tail`, when you need to monitor a log file's updating, you could use `tail -f file` to check it file in realtime.
 
+<br><br>
 ### ***C. Less is more***
 
 It seems you still can't view the entire file continuously. `more` and `less` can help you view a file with a **srolling screen** effect. Try it:
@@ -559,6 +572,7 @@ This worm is cool
 >
 >-n: Show the line numbers along with the matched lines.
 
+<br><br>
 ### ***B. redirection `>`*** 
 
 Previously we mentioned, for a command line, the command itself is crucial. Then you can add arguments to apply the function on and options/flags to modify the details of the function. Here we introduce **Redirection** `>` to save the output in a file:
@@ -589,6 +603,7 @@ Try to search "HOX" gene in the `.gff3` file, and save the output in a `HOX.tsv`
 
 >NOTE: If you use `>>`, the new output will be appended at the end of the original file.
 
+<br><br>
 ### ***C. Regular Expressions (RegEx)*** 
 
 What does the **Regular Expressions** in `grep` mean? Basically, it is a grammar of patterns used to match character combinations in strings. They are an incredibly powerful tool for searching, matching, and manipulating text. 
@@ -598,7 +613,7 @@ RegEx allows you to search for text that matches complex patterns rather than si
 
 Considering RegEx is such a big part, I won't talk much about that here. But I recommend https://regex101.com/ to learn and test your RegEx.
 
-
+<br><br>
 ### ***D. wc*** 
 
 `wc` stands for **Word Count**, but it does more than just counting words. It can count lines, words, and characters in a file. This is especially useful when dealing with large files and you need to quickly get a sense of their size or contents. Try:
@@ -619,6 +634,7 @@ You can use specific options with wc:
 - `-w`: Count words only.
 - `-c`: Count characters only.
 
+<br><br>
 ### ***E. pipes `|`*** 
 
 If you used _**R**_, you might be familiar with the pipe function. It combines multiple command together, and use pipe `|` to pass the output of the last command as the input of the next.
@@ -644,6 +660,7 @@ When I say multiple command, it means you can use pipe `|` to link command til f
 
 **`ls`/`grep` and  `| wc -l` is the most frequent used command. It can help you quickly to know the numbers of files or the numbers of the target you want to know in the folder.**
 
+<br><br>
 ### ***F. history*** 
 Simply type this and see what happpens:
 ```bash
@@ -664,6 +681,7 @@ Use pipe `|` and other command to search your history:
 history | grep "worm"
 ```
 
+<br><br>
 ### ***G. alias*** 
 
 If you need to use a command line a thousand times (for me it is `ls -l`), it is annoying to type it everytime. `alias` allows you to create shortcuts for long or frequently used commands. This is particularly useful when you have a command with many options that you use repeatedly.
@@ -687,6 +705,7 @@ echo 'alias ll="ls -l"' >> ~/.bashrc
 ```
 Now you can try to logout Aoifolution and login and try `ll` agian.
 
+<br><br>
 ### ***H. echo*** 
 
 The `echo` command that we used in last section is very like `print` function in other programming language. `echo` command is used to print text or variables to the terminal. It's often used in scripts to display messages or to output the value of variables.
@@ -701,6 +720,7 @@ echo "This worm is also cool" > worms/worm3 # you can use `echo` to write to a f
 >
 >some command environment variables are $PATH, $HOME, $USER, $PWD.... Try to print them on the screen and guess what are they stand for.
 
+<br><br>
 ### ***I. sed*** 
 When you not only need to search something with `grep` but also want to replace them, you can use the stream editor `sed`. 
 
@@ -738,6 +758,7 @@ cat elle.txt
 
 `sed` allows you do more with different options, such as delete lines others. Check its help page to see more.
 
+<br><br>
 ### ***J. find*** 
 
 `find` is a command used to search for files and directories within a directory hierarchy based on different criteria such as name, size, type, or modification time. 
@@ -775,6 +796,7 @@ ___
    - [x] Write these IDs in a file called "gene_ID.txt"
    - [x] print the last 100 history and write those about worms into a file called "worm_operation.txt"
    - [x] replace `worm` string in that file into `elle` in place
+   - [x] Lukasz has forgetton where he put is music which end with `(is the limit.).flac` in his folder `/home/niezabil/music`. Could you find it for him (use wildcards and -name option) 
    - [x] logout Aoifolution 
    - [x] alter the command in the answer to add a shortcut of `ssh` command permanently in your environment
 
@@ -791,6 +813,7 @@ ___
    grep ">" Homo_sapiens.GRCh38.112.ensembl.fasta > gene_ID.txt
    history 100 | grep "worm" > worm_operation.txt
    sed sed 's/worm/elle/g' -i worm_operation.txt
+   find /home/niezabil/music -name "*(is the limit.).flac"
    ctrl + d
    echo 'alias sh="ssh <username>@aoifolution.gen.tcd.ie"' >> ~/.bashrc  # this is useful. Everytime to login the server, just type `sh`
   ```
@@ -814,7 +837,7 @@ bash nap.sh # run the .sh script with bash
 >
 >**Shebang** (`#!`): At the top of the script, you can see `#!/bin/bash`. This tells the system what interpreter to use to run the script.
 
-
+<br><br>
 ### ***A. Change the permission of a file (chmond)*** 
 You might see this when you try to run the script:
 ```bash
@@ -862,19 +885,18 @@ chmod 755 nap.sh
 
 For more usage of `chmod`, change `chmod --help` or https://en.wikipedia.org/wiki/Chmod 
 
+<br><br>
 ### ***B. Change the owner of a file (chown)*** 
 Similarly to permission, you can change the ownership of a file/folder with `chown`: 
 ```bash
 chown your_username nap.sh
 ```
 
-<br><br>
-
-**run the script after you do all the changes: `bash nap.sh`**
+**Run the script after you do all the changes: `bash nap.sh`**
 
 **Then count to 10 in your heart.**
-<br><br>
 
+<br><br>
 ### ***C. Running Jobs in the Background `&`*** 
 Normally, when you run a command in the terminal, it blocks the terminal until the command completes (so you can do nothing until I finish my napping.). If you want to keep using the terminal while a process runs, you can run the command in the background by use the `&` symbol after the command:
 
@@ -887,7 +909,7 @@ Normally, when you run a command in the terminal, it blocks the terminal until t
 bash nap.sh &
 > [1] 962640
 ```
-
+<br><br>
 ### ***D. Check Active Jobs `jobs`*** 
 If you want to see which jobs are currently running in the background, use the `jobs` command. This command lists all background jobs associated with the current terminal session.
 ```bash
@@ -896,6 +918,7 @@ jobs
 ```
 Each job is assigned a job number, such as [1] in the above example, which you can use to control the job.
 
+<br><br>
 ### ***E. Bringing Jobs to the Foreground `fg`*** 
 Sometimes you may want to bring a background job back to the foreground to interact with it or terminate it manually. You can use the `fg` command followed by the job number:
 ```bash
@@ -903,6 +926,7 @@ fg %1  # Bring job 1 to the foreground
 ```
 If you don’t specify a job number, fg will bring the most recent job to the foreground.
 
+<br><br>
 ### ***F. Suspending and Resuming Jobs `bg`*** 
 You can suspend a running job using **Ctrl + Z**. This pauses the job and frees up the terminal for other tasks. The suspended job can be resumed either in the background or foreground.
 
@@ -915,6 +939,7 @@ fg %1 # Use the `fg` to bring the job back to the foreground:
 ```
 >TIPS: this is a very useful combination. Sometimes you want to have a trial run on your script first to see if it works, then pause it and put it to backgroud.
 
+<br><br>
 ### ***G. Killing a Job `kill`*** 
 
 If you want to terminate a background job, you can use the `kill` command followed by the job number or process ID (PID).
@@ -923,11 +948,21 @@ If you want to terminate a background job, you can use the `kill` command follow
 kill %1  # Kill job 1
 ```
 
+<br><br>
 ### ***H. Monitoring Jobs and Processes `htop`*** 
 `htop` is a more powerful, interactive process viewer for Unix systems. It  offers a more user-friendly, graphical interface to monitor system resources such as CPU, memory, and running processes. We have `htop` installed on Aoifolution so simply type it to launch it:
 ```bash
 htop
 ```
+
+<br><br>
+### ***I. running jobs after logout `nohup`*** 
+`nohup` means "no hang up", which is to tell the system ignore the logout signal and keep running the jobs. It use as:
+```bash
+nohup ./nap.sh &
+```
+And the output will be written in `nohup.out` file.
+
 <br><br><br>
 ---
 https://cmdchallenge.com/
